@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import StandardCTA from "../components/StandardCTA";
 
@@ -98,7 +98,7 @@ export default function TermsAndConditions() {
                   )}
                   {section.id === "contact" && (
                     <div className="rounded-2xl border border-blue-100 bg-[#f2f7ff] p-6">
-                      <p className="text-lg font-black">Smart ePrint Services</p>
+                      <p className="text-lg font-black">Smart ePrint Services</p><p className="mt-1 text-xs font-semibold text-slate-500">Owned &amp; Operated by Innovation Dynamic Group LLC</p>
                       <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">11397 Quincy St NE<br />Blaine, Minnesota, 55434<br />United States</p>
                       <a href="mailto:support@smarteprintservices.com" className="mt-3 block font-bold text-[#0758cf] hover:underline">support@smarteprintservices.com</a>
                       <a href="tel:+18777652289" className="mt-2 block text-sm font-semibold text-[#0758cf] hover:underline">+1 (877) 765-2289</a>
@@ -119,3 +119,4 @@ export default function TermsAndConditions() {
     </main>
   );
 }
+

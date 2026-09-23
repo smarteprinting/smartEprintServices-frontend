@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-slate-950 text-slate-300 border-t border-slate-800">
 
-      {/* Trust Strip */}
+      {/* â”€â”€ Trust Strip â”€â”€ */}
       <div className="bg-slate-900 border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-5 py-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="flex items-center gap-3">
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Grid */}
+      {/* â”€â”€ Main Grid â”€â”€ */}
       <div className="max-w-6xl mx-auto px-5 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
         {/* Brand */}
@@ -77,7 +77,7 @@ export default function Footer() {
           </Link>
 
           <p className="text-sm text-slate-400 leading-relaxed">
-            Shop genuine printers, original ink & toner cartridges, and accessories - delivered fast across the US.
+            Shop genuine printers, original ink & toner cartridges, and accessories â€” delivered fast across the US.
           </p>
 
           {/* HP Partner */}
@@ -148,19 +148,12 @@ export default function Footer() {
                 <span className="break-all">support@smarteprintservices.com</span>
               </a>
             </li>
-            <li className="flex items-start gap-2.5 text-sm text-slate-400">
-              <MapPin className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" />
-              <span>
-                11397 Quincy St NE<br />
-                Blaine, Minnesota 55434<br />
-                United States
-              </span>
-            </li>
+
           </ul>
         </div>
       </div>
 
-      {/* Payment Methods & Back to Top */}
+      {/* â”€â”€ Payment Methods & Back to Top â”€â”€ */}
       <div className="border-t border-slate-800">
         <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
@@ -179,24 +172,24 @@ export default function Footer() {
             className="text-xs text-slate-400 hover:text-white transition-colors"
             aria-label="Back to top"
           >
-            ↑ Back to top
+            â†‘ Back to top
           </button>
         </div>
       </div>
 
-      {/* Copyright */}
+      {/* â”€â”€ Copyright â”€â”€ */}
       <div className="border-t border-slate-900 bg-[#03080f]">
         <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
-          <p>&copy; {year} Smart ePrint Services. All rights reserved. Owned &amp; Operated by <span className="text-slate-400 font-semibold">Innovation Dynamic Group LLC</span>.</p>
+          <p>Â© {year} SmartEprint Services LLC. All rights reserved.</p>
           <div className="flex items-center flex-wrap justify-center gap-3">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy</Link>
-            <span>|</span>
+            <span>Â·</span>
             <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors">Terms</Link>
-            <span>|</span>
+            <span>Â·</span>
             <Link href="/refund-cancellation-policy" className="hover:text-slate-300 transition-colors">Refund Policy</Link>
-            <span>|</span>
+            <span>Â·</span>
             <Link href="/disclaimer" className="hover:text-slate-300 transition-colors">Disclaimer</Link>
-            <span>|</span>
+            <span>Â·</span>
             <Link href="/cookie-policy" className="hover:text-slate-300 transition-colors">Cookies</Link>
           </div>
         </div>
@@ -205,3 +198,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+

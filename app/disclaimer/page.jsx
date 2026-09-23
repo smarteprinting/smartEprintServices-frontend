@@ -1,4 +1,4 @@
-import StandardCTA from "../components/StandardCTA";
+﻿import StandardCTA from "../components/StandardCTA";
 
 export const metadata = {
   title: "Disclaimer | Smart ePrint Services",
@@ -32,7 +32,7 @@ const sections = [
     content: [
       "All product names, brand names, logos, and trademarks displayed on this Website are the property of their respective owners. Reference to any products, services, processes, or other information by trade name, trademark, manufacturer, or otherwise does not constitute or imply endorsement, sponsorship, or recommendation by Smart ePrint Services.",
       "Smart ePrint Services is an independent retailer and is not affiliated with, authorized by, or sponsored by any of the manufacturers whose products we sell, unless otherwise explicitly stated. Trademarks are used for identification and informational purposes only.",
-      "HP® is a registered trademark of HP Inc. Canon® is a registered trademark of Canon Inc. Epson® is a registered trademark of Seiko Epson Corporation. Brother® is a registered trademark of Brother Industries, Ltd. All other trademarks are the property of their respective owners."
+      "HPÂ® is a registered trademark of HP Inc. CanonÂ® is a registered trademark of Canon Inc. EpsonÂ® is a registered trademark of Seiko Epson Corporation. BrotherÂ® is a registered trademark of Brother Industries, Ltd. All other trademarks are the property of their respective owners."
     ]
   },
   {
@@ -161,7 +161,7 @@ export default function Disclaimer() {
                   )}
                   {section.id === "contact" && (
                     <div className="rounded-2xl border border-blue-100 bg-[#f2f7ff] p-6">
-                      <p className="text-lg font-black">Smart ePrint Services</p>
+                      <p className="text-lg font-black">Smart ePrint Services</p><p className="mt-1 text-xs font-semibold text-slate-500">Owned &amp; Operated by Innovation Dynamic Group LLC</p>
                       <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">11397 Quincy St NE<br />Blaine, Minnesota, 55434<br />United States</p>
                       <a href="mailto:support@smarteprintservices.com" className="mt-3 block font-bold text-[#0758cf] hover:underline">support@smarteprintservices.com</a>
                     </div>
@@ -177,3 +177,4 @@ export default function Disclaimer() {
     </main>
   );
 }
+
