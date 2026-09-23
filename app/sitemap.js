@@ -1,4 +1,4 @@
-export default function sitemap() {
+﻿export default function sitemap() {
   const baseUrl = 'https://smarteprintservices.com';
   const routes = [
     { path: '', priority: 1.0, changeFrequency: 'daily' },
@@ -7,7 +7,6 @@ export default function sitemap() {
     { path: '/services', priority: 0.9, changeFrequency: 'weekly' },
     { path: '/shop', priority: 0.9, changeFrequency: 'weekly' },
     { path: '/shops', priority: 0.8, changeFrequency: 'weekly' },
-    { path: '/blogs', priority: 0.8, changeFrequency: 'weekly' },
     { path: '/book-an-appointment', priority: 0.8, changeFrequency: 'weekly' },
     { path: '/contact-us', priority: 0.9, changeFrequency: 'weekly' },
     { path: '/faqs', priority: 0.7, changeFrequency: 'monthly' },

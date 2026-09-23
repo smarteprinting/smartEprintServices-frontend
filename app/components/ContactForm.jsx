@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { ArrowRight, Mail, User, Hash, HelpCircle, MessageSquare } from "lucide-react";
@@ -134,9 +134,7 @@ export default function ContactForm() {
             onChange={(e) => setHoneypot(e.target.value)}
           />
         </div>
-        <div className="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
-          <Turnstile onToken={setTurnstileToken} />
-        </div>
+        
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Full Name */}
@@ -239,6 +237,9 @@ export default function ContactForm() {
             />
           </div>
         </div>
+
+        {/* Cloudflare Turnstile invisible security - no UI shown */}
+        <Turnstile onToken={setTurnstileToken} />
 
         {/* Submit */}
         <button

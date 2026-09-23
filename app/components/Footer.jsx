@@ -1,16 +1,16 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, Lock, Truck, ShieldCheck, RotateCcw, MapPin } from "lucide-react";
 
 const shopLinks = [
-  { href: "/shop?category=laser", label: "Laser Printers & MFPs" },
-  { href: "/shop?category=inkjet", label: "Inkjet & EcoTank" },
-  { href: "/shop?category=all-in-one", label: "All-in-One Multi-Function" },
-  { href: "/shop?category=supplies", label: "Ink & Toners" },
-  { href: "/shop?category=accessories", label: "Cables & Accessories" },
-  { href: "/shop", label: "View All Products" },
+  { href: "/shop", label: "Shop All Products" },
+  { href: "/shop?category=home-printers", label: "Home Printers" },
+  { href: "/shop?category=office-printers", label: "Office Printers" },
+  { href: "/shop?category=laser-printers", label: "Laser Printers" },
+  { href: "/shop?category=inkjet-printers", label: "Inkjet Printers" },
+  { href: "/shop?category=ink-toner", label: "Ink & Toner - Genuine Supplies" },
 ];
 
 const helpLinks = [
@@ -179,7 +179,7 @@ export default function Footer() {
             className="text-xs text-slate-400 hover:text-white transition-colors"
             aria-label="Back to top"
           >
-            ↑ Back to top
+              Back to top
           </button>
         </div>
       </div>

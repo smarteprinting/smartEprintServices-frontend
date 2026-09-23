@@ -23,21 +23,21 @@ import {
   RotateCcw,
   CheckCircle2,
   ChevronDown,
+  Printer,
+  Users,
+  Droplet,
+  Layers,
 } from "lucide-react";
 import { categories, brands, products as fallbackCatalog } from "../../lib/productsData";
 import { useCart } from "../components/CartContext";
 import CheckoutModal from "../components/CheckoutModal";
 import { useAuth } from "../components/AuthContext";
 
-function isHpPrinter(product) {
+function isSuppliesProduct(product) {
   if (!product) return false;
-  const brand = (product.brand || "").toLowerCase();
   const name = (product.name || product.title || "").toLowerCase();
-  const isHp = brand === "hp" || name.includes("hp");
-  if (!isHp) return false;
-
   const cat = String(product.category || "").toLowerCase();
-  const isSupplies =
+  return (
     name.includes("cartridge") ||
     name.includes("toner") ||
     name.includes("ink bottle") ||
@@ -47,13 +47,24 @@ function isHpPrinter(product) {
     name.includes("printhead") ||
     name.includes("yield") ||
     cat.includes("supplies") ||
-    cat.includes("accessories") ||
+    cat === "ink-toner" ||
+    cat === "genuine-supplies" ||
     cat === "698238e1aafc80955cc50c4a" ||
     cat === "6aa5d0fa035a474cc5e0c719" ||
-    cat === "6aa5d0fa035a474cc5e0c71a";
+    cat === "6aa5d0fa035a474cc5e0c71a"
+  );
+}
 
-  if (isSupplies) return false;
+function isHpPrinter(product) {
+  if (!product) return false;
+  const brand = (product.brand || "").toLowerCase();
+  const name = (product.name || product.title || "").toLowerCase();
+  const isHp = brand === "hp" || name.includes("hp");
+  if (!isHp) return false;
 
+  if (isSuppliesProduct(product)) return false;
+
+  const cat = String(product.category || "").toLowerCase();
   return (
     name.includes("printer") ||
     name.includes("laserjet") ||
@@ -66,7 +77,11 @@ function isHpPrinter(product) {
     name.includes("pagewide") ||
     name.includes("designjet") ||
     cat === "laser" ||
+    cat === "laser-printers" ||
     cat === "inkjet" ||
+    cat === "inkjet-printers" ||
+    cat === "home-printers" ||
+    cat === "office-printers" ||
     cat === "all-in-one" ||
     cat === "698238c9aafc80955cc50c40" ||
     cat === "698238b9aafc80955cc50c3b" ||
@@ -88,6 +103,118 @@ function getProductPriority(product) {
   return 10;
 }
 
+// Category-specific Hero Data & Background Customization
+const categoryHeroData = {
+  all: {
+    badge: "Official HP Hardware Store",
+    badgeIcon: Sparkles,
+    badgeColor: "text-blue-300 border-blue-400/10 bg-blue-500/20",
+    title: "HP Printers, Toners &",
+    gradientTitle: "Smart Hardware Catalog",
+    desc: "Purchase authentic HP laser printers, wireless inkjets, high-capacity supertanks, and original supplies with manufacturer warranties, rapid delivery, and certified setup support.",
+    bgImage: "/bg-hero.webp",
+    featuredImage: "/services.png",
+    accentGrad: "from-[#024AD8] via-[#023b9f] to-[#011f59]",
+    badgeHighlights: [
+      { icon: Truck, text: "Free Shipping Over $49", color: "text-blue-400" },
+      { icon: ShieldCheck, text: "Official HP Hardware Warranty", color: "text-emerald-400" },
+      { icon: Wrench, text: "On-Site Setup Available", color: "text-amber-400" },
+    ],
+    sideTag: "HP Storefront",
+    sideSubtitle: "Hardware & Supplies",
+  },
+  "home-printers": {
+    badge: "HP Home & Student Printing",
+    badgeIcon: Printer,
+    badgeColor: "text-sky-300 border-sky-400/30 bg-sky-500/10",
+    title: "HP Home Printers &",
+    gradientTitle: "Everyday Wireless All-in-Ones",
+    desc: "Engineered for family homework, recipes, and home office flexibility. Featuring HP DeskJet, Envy, and Smart Tank with seamless phone setup, self-healing Wi-Fi, and vibrant photo-quality color.",
+    bgImage: "/bg-hero.webp",
+    featuredImage: "/hero-printer-only.jpg",
+    accentGrad: "from-[#024AD8] via-[#0066cc] to-[#0a2559]",
+    badgeHighlights: [
+      { icon: Check, text: "Simple Mobile & Wi-Fi Setup", color: "text-sky-300" },
+      { icon: Sparkles, text: "Borderless Color Photos", color: "text-amber-300" },
+      { icon: ShieldCheck, text: "Genuine HP Manufacturer Warranty", color: "text-emerald-400" },
+    ],
+    sideTag: "Home Essentials",
+    sideSubtitle: "DeskJet & Envy Series",
+  },
+  "office-printers": {
+    badge: "HP Commercial & Team Powerhouses",
+    badgeIcon: Users,
+    badgeColor: "text-indigo-300 border-indigo-400/30 bg-indigo-500/10",
+    title: "HP Office & Business",
+    gradientTitle: "High-Volume Multi-Function Printers",
+    desc: "Built to power fast-paced business workflows and high-volume teams. High-speed duplex printing, automatic document feeders, Gigabit networking, and HP Wolf Pro Security defense.",
+    bgImage: "/bg-hero.webp",
+    featuredImage: "/h3.png",
+    accentGrad: "from-[#02319c] via-[#0b246a] to-[#061239]",
+    badgeHighlights: [
+      { icon: Zap, text: "Blazing Speeds Up to 35+ ppm", color: "text-amber-400" },
+      { icon: ShieldCheck, text: "HP Wolf Pro Hardware Defense", color: "text-emerald-400" },
+      { icon: Truck, text: "Fast Insured Nationwide Delivery", color: "text-blue-400" },
+    ],
+    sideTag: "Business Grade",
+    sideSubtitle: "OfficeJet Pro & LaserJet",
+  },
+  "laser-printers": {
+    badge: "HP LaserJet Precision Engineering",
+    badgeIcon: Zap,
+    badgeColor: "text-amber-300 border-amber-400/30 bg-amber-500/10",
+    title: "HP LaserJet Series",
+    gradientTitle: "Razor-Sharp Monochrome & Color Laser",
+    desc: "Industry-leading monochrome and color laser printing. Ideal for reports, contracts, invoices, and high-volume documents with smudge-proof precision and ultra-low cost per printed page.",
+    bgImage: "/bg-hero.webp",
+    featuredImage: "/h2.png",
+    accentGrad: "from-[#0038a8] via-[#0b2b80] to-[#041242]",
+    badgeHighlights: [
+      { icon: Zap, text: "Ultra-Fast First-Page Out", color: "text-amber-300" },
+      { icon: ShieldCheck, text: "Zero Smudge Archival Output", color: "text-emerald-400" },
+      { icon: Check, text: "Heavy Duty Monthly Cycles", color: "text-sky-300" },
+    ],
+    sideTag: "Laser Technology",
+    sideSubtitle: "LaserJet & Pro MFP",
+  },
+  "inkjet-printers": {
+    badge: "HP Smart Tank & Inkjet Innovation",
+    badgeIcon: Droplet,
+    badgeColor: "text-cyan-300 border-cyan-400/30 bg-cyan-500/10",
+    title: "HP Inkjet & Smart Tank",
+    gradientTitle: "Vivid Color & Cartridge-Free Supertanks",
+    desc: "Print thousands of eye-catching color documents, lab-quality borderless photos, and creative projects with refillable spill-free bottles and up to 2 years of Original HP Ink included.",
+    bgImage: "/bg-hero.webp",
+    featuredImage: "/h1.png",
+    accentGrad: "from-[#0142b8] via-[#0055d4] to-[#092b70]",
+    badgeHighlights: [
+      { icon: Sparkles, text: "Up to 2 Years Ink Included", color: "text-cyan-300" },
+      { icon: Check, text: "Spill-Free Refill Bottles", color: "text-emerald-400" },
+      { icon: ShieldCheck, text: "Brilliant Photographic Clarity", color: "text-amber-300" },
+    ],
+    sideTag: "Supertank & Photo",
+    sideSubtitle: "Smart Tank & Inkjet",
+  },
+  "ink-toner": {
+    badge: "Original HP Supplies Guarantee",
+    badgeIcon: ShoppingCart,
+    badgeColor: "text-emerald-300 border-emerald-400/30 bg-emerald-500/10",
+    title: "Original HP Ink & Toner",
+    gradientTitle: "Genuine Cartridges & Multi-Pack Supplies",
+    desc: "Protect your hardware investment and guarantee flawless, streak-free prints with Original HP toner and ink cartridges. Engineered with tamper-resistant security chips and 100% genuine formulation.",
+    bgImage: "/bg-hero.webp",
+    featuredImage: "/ink-toner.png",
+    accentGrad: "from-[#081f4d] via-[#0b285f] to-[#040f24]",
+    badgeHighlights: [
+      { icon: ShieldCheck, text: "Anti-Fraud Security Chips", color: "text-emerald-400" },
+      { icon: Sparkles, text: "Up to 2x More Prints vs Generic", color: "text-amber-300" },
+      { icon: Truck, text: "Fast Dispatch Across US", color: "text-sky-300" },
+    ],
+    sideTag: "Genuine Supplies",
+    sideSubtitle: "Toner & Cartridges",
+  },
+};
+
 function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
@@ -103,7 +230,30 @@ function ShopContent() {
   const [onlyInStock, setOnlyInStock] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
 
-  // Load HP products for the focused HP storefront, showing HP printers first.
+  // Sync category state when URL searchParams change
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    if (cat) {
+      setSelectedCategory(cat);
+    } else {
+      setSelectedCategory("all");
+    }
+  }, [searchParams]);
+
+  const handleSelectCategory = (catId) => {
+    setSelectedCategory(catId);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (catId === "all") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", catId);
+      }
+      window.history.replaceState(null, "", url.toString());
+    }
+  };
+
+  // Load HP products for the storefront
   useEffect(() => {
     fetch("/api/products", { cache: "no-store" })
       .then((res) => res.json())
@@ -133,11 +283,9 @@ function ShopContent() {
   // Modals state
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [directCheckoutItem, setDirectCheckoutItem] = useState(null);
-
-  // Quantity inside Quick View
   const [quickViewQty, setQuickViewQty] = useState(1);
 
-  // Filter and sort the HP catalog.
+  // Filter and sort HP catalog
   const filteredProducts = useMemo(() => {
     return catalogProducts
       .filter((product) => {
@@ -156,59 +304,95 @@ function ShopContent() {
           const aioList = Array.isArray(product.allInOneType)
             ? product.allInOneType.map((t) => String(t).toLowerCase())
             : [String(product.allInOneType || "").toLowerCase()];
+          const usageList = Array.isArray(product.usageCategory)
+            ? product.usageCategory.map((u) => String(u).toLowerCase())
+            : [String(product.usageCategory || "").toLowerCase()];
 
           let matchesCategory = false;
 
-          if (selectedCategory === "laser") {
+          if (selectedCategory === "home-printers" || selectedCategory === "home") {
+            // Home Printers
+            matchesCategory =
+              !isSuppliesProduct(product) &&
+              (catId === "home-printers" ||
+                catId === "home" ||
+                usageList.some((u) => u.includes("home")) ||
+                nameStr.includes("deskjet") ||
+                nameStr.includes("envy") ||
+                nameStr.includes("smart tank") ||
+                nameStr.includes("home"));
+          } else if (selectedCategory === "office-printers" || selectedCategory === "office") {
+            // Office Printers
+            matchesCategory =
+              !isSuppliesProduct(product) &&
+              (catId === "office-printers" ||
+                catId === "office" ||
+                usageList.some((u) => u.includes("office")) ||
+                nameStr.includes("officejet") ||
+                nameStr.includes("laserjet") ||
+                nameStr.includes("pro") ||
+                nameStr.includes("enterprise") ||
+                nameStr.includes("pagewide") ||
+                nameStr.includes("office"));
+          } else if (selectedCategory === "laser-printers" || selectedCategory === "laser") {
             // Laser Printers
             matchesCategory =
-              catId === "laser" ||
-              catId === "698238c9aafc80955cc50c40" ||
-              techList.includes("laser") ||
-              nameStr.includes("laserjet") ||
-              (nameStr.includes("laser") && !nameStr.includes("toner"));
-          } else if (selectedCategory === "inkjet") {
-            // Inkjet & EcoTank
+              !isSuppliesProduct(product) &&
+              (catId === "laser" ||
+                catId === "laser-printers" ||
+                catId === "698238c9aafc80955cc50c40" ||
+                techList.some((t) => t.includes("laser")) ||
+                nameStr.includes("laserjet") ||
+                (nameStr.includes("laser") && !nameStr.includes("toner")));
+          } else if (selectedCategory === "inkjet-printers" || selectedCategory === "inkjet") {
+            // Inkjet Printers
             matchesCategory =
-              catId === "inkjet" ||
-              catId === "698238b9aafc80955cc50c3b" ||
-              techList.includes("inkjet") ||
-              nameStr.includes("smart tank") ||
-              nameStr.includes("deskjet") ||
-              nameStr.includes("envy") ||
-              nameStr.includes("officejet") ||
-              (nameStr.includes("inkjet") && !nameStr.includes("cartridge"));
-          } else if (selectedCategory === "all-in-one") {
-            // All-in-One Multi-Function
+              !isSuppliesProduct(product) &&
+              (catId === "inkjet" ||
+                catId === "inkjet-printers" ||
+                catId === "698238b9aafc80955cc50c3b" ||
+                techList.some((t) => t.includes("inkjet")) ||
+                nameStr.includes("smart tank") ||
+                nameStr.includes("deskjet") ||
+                nameStr.includes("envy") ||
+                nameStr.includes("officejet") ||
+                (nameStr.includes("inkjet") && !nameStr.includes("cartridge")));
+          } else if (
+            selectedCategory === "ink-toner" ||
+            selectedCategory === "supplies" ||
+            selectedCategory === "genuine-supplies"
+          ) {
+            // Ink & Toner / Genuine Supplies
             matchesCategory =
-              catId === "all-in-one" ||
-              catId === "6982389caafc80955cc50c31" ||
-              aioList.includes("multifunction") ||
-              aioList.includes("all-in-one") ||
-              nameStr.includes("all-in-one") ||
-              nameStr.includes("all in one") ||
-              nameStr.includes("mfp");
-          } else if (selectedCategory === "supplies") {
-            // Ink & Toners
-            matchesCategory =
-              catId === "supplies" ||
               catId === "ink-toner" ||
+              catId === "supplies" ||
+              catId === "genuine-supplies" ||
               catId === "698238e1aafc80955cc50c4a" ||
               catId === "6aa5d0fa035a474cc5e0c719" ||
               nameStr.includes("toner") ||
               nameStr.includes("cartridge") ||
-              nameStr.includes("ink cartridge") ||
-              nameStr.includes("ink bottle");
+              nameStr.includes("ink bottle") ||
+              nameStr.includes("drum") ||
+              nameStr.includes("printhead") ||
+              nameStr.includes("ribbon") ||
+              isSuppliesProduct(product);
+          } else if (selectedCategory === "all-in-one") {
+            matchesCategory =
+              !isSuppliesProduct(product) &&
+              (catId === "all-in-one" ||
+                catId === "6982389caafc80955cc50c31" ||
+                aioList.includes("multifunction") ||
+                aioList.includes("all-in-one") ||
+                nameStr.includes("all-in-one") ||
+                nameStr.includes("all in one") ||
+                nameStr.includes("mfp"));
           } else if (selectedCategory === "accessories") {
-            // Accessories & Cables
             matchesCategory =
               catId === "accessories" ||
               catId === "6aa5d0fa035a474cc5e0c71a" ||
               nameStr.includes("cable") ||
               nameStr.includes("cord") ||
-              nameStr.includes("adapter") ||
-              nameStr.includes("tray") ||
-              nameStr.includes("accessory");
+              nameStr.includes("adapter");
           }
 
           if (!matchesCategory) {
@@ -278,75 +462,107 @@ function ShopContent() {
     setDirectCheckoutItem(item);
   };
 
+  const activeCategoryObj = categories.find((c) => c.id === selectedCategory) || {
+    id: "all",
+    label: "Shop All Products",
+  };
+
+  // Determine current category hero content
+  const currentHero =
+    categoryHeroData[selectedCategory] ||
+    (selectedCategory === "home" ? categoryHeroData["home-printers"] : null) ||
+    (selectedCategory === "office" ? categoryHeroData["office-printers"] : null) ||
+    (selectedCategory === "laser" ? categoryHeroData["laser-printers"] : null) ||
+    (selectedCategory === "inkjet" ? categoryHeroData["inkjet-printers"] : null) ||
+    (selectedCategory === "supplies" || selectedCategory === "genuine-supplies"
+      ? categoryHeroData["ink-toner"]
+      : categoryHeroData.all);
+
+  const BadgeIcon = currentHero.badgeIcon;
+
   return (
     <div className="min-h-screen bg-slate-50/60 pb-20">
-      {/* Hero Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#024AD8] via-[#023b9f] to-[#011f59] text-white py-16 lg:py-20">
-        {/* Glow decoration */}
-        <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue-600/15 blur-3xl pointer-events-none" />
+      {/* Dynamic Category Hero Banner */}
+      <section className={`relative overflow-hidden bg-gradient-to-br ${currentHero.accentGrad} text-white py-14 lg:py-20 transition-all duration-500`}>
+        {/* Background Image with soft dark overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10 mix-blend-overlay pointer-events-none transition-opacity duration-700"
+          style={{ backgroundImage: `url('${currentHero.bgImage}')` }}
+        />
+
+        {/* Ambient glow decoration */}
+        <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
+        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-sky-500/15 blur-3xl pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+            {/* Left Content */}
             <div className="max-w-2xl text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold text-blue-300 mb-4 backdrop-blur-md">
-                <Sparkles size={14} className="text-blue-400" />
-                <span>Genuine Hardware & Supplies Store</span>
+              {/* Category Badge */}
+              <div className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold mb-4 backdrop-blur-md transition-all ${currentHero.badgeColor}`}>
+                <BadgeIcon size={15} />
+                <span>{currentHero.badge}</span>
               </div>
+
+              {/* Category Heading */}
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                Printers, Toners & <br />
-                <span className="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">
-                  Smart Hardware Catalog
+                {currentHero.title} <br />
+                <span className="bg-gradient-to-r from-blue-300 via-sky-200 to-indigo-100 bg-clip-text text-transparent">
+                  {currentHero.gradientTitle}
                 </span>
               </h1>
-              <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-                Purchase authentic laser printers, inkjets, supertanks, and original cartridges with full manufacturer warranties, fast nationwide delivery, and optional on-site setup.
+
+              {/* Category Description */}
+              <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+                {currentHero.desc}
               </p>
 
-              {/* Trust Badges */}
-              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-blue-400">
-                    <Truck size={15} />
-                  </div>
-                  <span>Free Standard Shipping over $49</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-emerald-400">
-                    <ShieldCheck size={15} />
-                  </div>
-                  <span>1-Year Official Warranty</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-amber-400">
-                    <Wrench size={15} />
-                  </div>
-                  <span>On-Site Setup Available</span>
-                </div>
+              {/* Dynamic Trust Badges */}
+              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-slate-200">
+                {currentHero.badgeHighlights.map((badge, idx) => {
+                  const IconComponent = badge.icon;
+                  return (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className={`flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 ${badge.color}`}>
+                        <IconComponent size={15} />
+                      </div>
+                      <span>{badge.text}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Specialist Guidance Card */}
-            <div className="w-full max-w-sm rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
-              <div className="flex items-center justify-between mb-4">
-                <span className="rounded-full bg-brand-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                  Expert Advice
+            {/* Right Showcase Card with Featured Product Image */}
+            <div className="w-full max-w-md rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-white/30">
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded-full bg-brand-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
+                  {currentHero.sideTag}
                 </span>
-                <span className="text-xs text-blue-200">Hardware Guidance</span>
+                <span className="text-xs font-semibold text-blue-200">
+                  {currentHero.sideSubtitle}
+                </span>
               </div>
-              <h3 className="text-xl font-bold text-white">
-                Need Help Choosing?
-              </h3>
-              <p className="mt-1 text-xs text-slate-300 leading-relaxed">
-                Connect directly with a printer specialist to match page yields, wireless connectivity, and hardware with your workflow.
-              </p>
-              <div className="mt-5 rounded-2xl bg-slate-900/60 p-3.5 border border-white/10 flex items-center justify-between text-xs">
-                <span className="text-slate-400">Questions on compatibility?</span>
+
+              {/* Featured Visual */}
+              <div className="relative my-3 flex h-48 w-full items-center justify-center rounded-2xl bg-white/10 p-4 backdrop-blur-sm border border-white/10 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/40 to-transparent pointer-events-none" />
+                <Image
+                  src={currentHero.featuredImage}
+                  alt={currentHero.title}
+                  fill
+                  className="object-contain p-2 drop-shadow-2xl transition-transform duration-500 hover:scale-105"
+                  priority
+                />
+              </div>
+
+              <div className="mt-4 rounded-2xl bg-slate-950/60 p-3.5 border border-white/10 flex items-center justify-between text-xs">
+                <span className="text-slate-300">Compatibility Questions?</span>
                 <a
                   href="tel:+18777652289"
-                  className="font-bold text-blue-400 hover:text-blue-300 transition"
+                  className="font-bold text-sky-400 hover:text-sky-300 transition"
                 >
-                  Call +1 (877) 765-2289
+                  Call (877) 765-2289
                 </a>
               </div>
             </div>
@@ -433,7 +649,7 @@ function ShopContent() {
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => handleSelectCategory(cat.id)}
                   className={`flex-shrink-0 rounded-2xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${
                     active
                       ? "bg-brand-500 text-white shadow-md shadow-brand-500/20 scale-100"
@@ -447,12 +663,48 @@ function ShopContent() {
           </div>
         </div>
 
+        {/* Active Category Banner */}
+        {selectedCategory !== "all" && (
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white shadow-sm">
+                {selectedCategory.includes("laser") ? (
+                  <Zap size={20} />
+                ) : selectedCategory.includes("inkjet") ? (
+                  <Droplet size={20} />
+                ) : selectedCategory.includes("home") ? (
+                  <Printer size={20} />
+                ) : selectedCategory.includes("office") ? (
+                  <Users size={20} />
+                ) : (
+                  <ShoppingCart size={20} />
+                )}
+              </div>
+              <div>
+                <h2 className="text-base font-bold text-slate-900">
+                  HP {activeCategoryObj.label}
+                </h2>
+                <p className="text-xs text-slate-600">
+                  Showing {filteredProducts.length} authentic HP products in this category
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => handleSelectCategory("all")}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+            >
+              <X size={14} />
+              <span>View All Products</span>
+            </button>
+          </div>
+        )}
+
         {/* Results Header */}
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm font-medium text-slate-600">
             Showing <strong className="text-slate-900">{visibleProducts.length}</strong> of <strong className="text-slate-900">{filteredProducts.length}</strong> HP products
             {selectedCategory !== "all" && (
-              <span> in <strong className="text-brand-600">{categories.find(c => c.id === selectedCategory)?.label}</strong></span>
+              <span> in <strong className="text-brand-600">{activeCategoryObj.label}</strong></span>
             )}
             {selectedBrand === "HP" && (
               <span> by <strong className="text-brand-600">{selectedBrand}</strong></span>
@@ -462,7 +714,7 @@ function ShopContent() {
           {(selectedCategory !== "all" || searchQuery || onlyInStock) && (
             <button
               onClick={() => {
-                setSelectedCategory("all");
+                handleSelectCategory("all");
                 setSearchQuery("");
                 setOnlyInStock(false);
                 setVisibleCount(12);
@@ -488,7 +740,7 @@ function ShopContent() {
             </p>
             <button
               onClick={() => {
-                setSelectedCategory("all");
+                handleSelectCategory("all");
                 setSearchQuery("");
                 setOnlyInStock(false);
                 setVisibleCount(12);
@@ -607,7 +859,7 @@ function ShopContent() {
                         </span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-600">
-                        {product.inStock ? "● In Stock" : "Out of Stock"}
+                        {product.inStock ? "In Stock" : "Out of Stock"}
                       </span>
                     </div>
 

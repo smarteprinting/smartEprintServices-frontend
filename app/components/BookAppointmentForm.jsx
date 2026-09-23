@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, User, Phone, Mail, ChevronDown, MessageSquare, Wrench } from "lucide-react";
@@ -288,6 +288,9 @@ export default function BookAppointmentForm() {
             />
           </div>
         </div>
+
+        {/* Cloudflare Turnstile invisible security - no UI shown */}
+        <Turnstile onToken={setTurnstileToken} />
 
         {/* Submit Button */}
         <div className="sm:col-span-2 mt-0.5">

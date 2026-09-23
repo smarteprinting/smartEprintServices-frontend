@@ -4,7 +4,7 @@ import StandardCTA from "../components/StandardCTA";
 export const metadata = {
   title: "Privacy Policy | Smart ePrint Services",
   description: "Privacy policy for Smart ePrint Services.",
-};
+}; 
 
 const topics = [
   "Information We Collect",
