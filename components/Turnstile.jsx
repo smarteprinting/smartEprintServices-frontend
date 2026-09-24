@@ -35,7 +35,7 @@ export default function Turnstile({ onToken }) {
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
         size: "flexible",
-        appearance: "always",
+        appearance: "interaction-only",
         execution: "render",
 
         callback: (token) => {
