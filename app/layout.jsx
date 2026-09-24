@@ -3,7 +3,7 @@ import Script from 'next/script';
 import './globals.css';
 import SiteLayout from './components/SiteLayout';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], preload: false });
 
 export const metadata = {
   metadataBase: new URL('https://smarteprintservices.com'),
