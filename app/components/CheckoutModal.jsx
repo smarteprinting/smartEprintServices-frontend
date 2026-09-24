@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
+import { apiFetch as fetch } from "../../lib/api";
 
 export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
   const { cart, subtotal, clearCart } = useCart();

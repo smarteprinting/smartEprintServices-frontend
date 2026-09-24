@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { BarChart3, Box, DollarSign, ShoppingCart, Users } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 export default function AnalyticsPage() {
   const [data, setData] = useState(null);

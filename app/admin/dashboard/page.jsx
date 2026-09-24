@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Activity, ArrowUpRight, Box, CheckCircle2, Clock3, Package, Plus, Users } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 const statusItems = [
   { label: "Total Volume", key: "products", icon: Box, color: "text-[#2164d8]", background: "bg-blue-50" },

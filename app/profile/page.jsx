@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ClipboardList, KeyRound, LogOut, Save, UserCircle } from "lucide-react";
 import { useAuth } from "../components/AuthContext";
+import { apiFetch as fetch } from "../../lib/api";
 
 export default function ProfilePage() {
   const router = useRouter();

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ShieldCheck, Lock, User, ArrowRight, Sparkles, AlertCircle } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 export default function AdminLoginPage() {
   const router = useRouter();

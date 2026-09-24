@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Search, Users, MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 export default function CustomersPage() {
   const [customers, setCustomers] = useState([]);

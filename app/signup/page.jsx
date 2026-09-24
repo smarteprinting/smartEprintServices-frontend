@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { apiFetch as fetch } from "../../lib/api";
 
 export default function SignupPage() {
   const router = useRouter();

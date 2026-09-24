@@ -21,6 +21,7 @@ import { useCart } from "../../components/CartContext";
 import CheckoutModal from "../../components/CheckoutModal";
 import { useAuth } from "../../components/AuthContext";
 import { products as fallbackCatalog } from "../../../lib/productsData";
+import { apiFetch as fetch } from "../../../lib/api";
 
 function htmlToText(value = "") {
   if (typeof window === "undefined")

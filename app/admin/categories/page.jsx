@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Layers, Pencil, Plus, Save, Trash2, X } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 export default function CategoriesPage() {
   const [categories, setCategories] = useState([]);

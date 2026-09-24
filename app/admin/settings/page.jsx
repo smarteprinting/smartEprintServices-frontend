@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Building2, Save, Settings2 } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 const defaults = { companyName: "SmartEprint Services", email: "support@smarteprintservices.com", phone: "", website: "https://smarteprintservices.com", address: "", description: "", currency: "USD" };
 

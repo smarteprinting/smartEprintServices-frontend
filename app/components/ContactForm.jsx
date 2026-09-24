@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, Mail, User, Hash, HelpCircle, MessageSquare } from "lucide-react";
 import Turnstile from "../../components/Turnstile";
+import { apiFetch as fetch } from "../../lib/api";
 
 const inquiryTypes = [
   "Order Status & Tracking",

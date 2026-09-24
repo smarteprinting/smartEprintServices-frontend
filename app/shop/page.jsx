@@ -32,6 +32,7 @@ import { categories, brands, products as fallbackCatalog } from "../../lib/produ
 import { useCart } from "../components/CartContext";
 import CheckoutModal from "../components/CheckoutModal";
 import { useAuth } from "../components/AuthContext";
+import { apiFetch as fetch } from "../../lib/api";
 
 function isSuppliesProduct(product) {
   if (!product) return false;

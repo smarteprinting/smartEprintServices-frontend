@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ClipboardList, Search, Trash2 } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);

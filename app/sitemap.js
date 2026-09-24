@@ -1,4 +1,6 @@
-﻿export default function sitemap() {
+﻿export const dynamic = 'force-static';
+
+export default function sitemap() {
   const baseUrl = 'https://smarteprintservices.com';
   const routes = [
     { path: '', priority: 1.0, changeFrequency: 'daily' },

@@ -1,13 +1,14 @@
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminRootPage() {
-  const cookieStore = cookies();
-  const hasAuth = cookieStore.get("auth_token") || cookieStore.get("admin-auth");
+  const router = useRouter();
 
-  if (hasAuth) {
-    redirect("/admin/dashboard");
-  }
+  useEffect(() => {
+    router.replace("/admin/login");
+  }, [router]);
 
-  redirect("/admin/login");
+  return null;
 }

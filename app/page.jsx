@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { apiFetch as fetch } from "../lib/api";
 
 const organizationSchema = {
   "@context": "https://schema.org",

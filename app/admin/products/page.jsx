@@ -22,6 +22,7 @@ import {
   Italic,
   List,
 } from "lucide-react";
+import { apiFetch as fetch } from "../../../lib/api";
 import { categories, brands } from "@/lib/productsData";
 
 const defaultProductForm = {
