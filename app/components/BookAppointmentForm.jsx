@@ -141,9 +141,6 @@ export default function BookAppointmentForm() {
           <label htmlFor="appointment-website">Website</label>
           <input id="appointment-website" type="text" name="honeypot" tabIndex="-1" autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
         </div>
-        <div className="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
-          <Turnstile onToken={setTurnstileToken} />
-        </div>
         {/* Full Name */}
         <div className="relative">
           <label className="mb-1 block text-[11px] font-semibold text-gray-600 uppercase tracking-wide">Full Name *</label>

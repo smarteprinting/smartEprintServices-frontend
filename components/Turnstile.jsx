@@ -5,8 +5,7 @@ import { useEffect, useRef } from "react";
 const SCRIPT_ID = "cloudflare-smarteprintservices-ok-turnstile-script";
 
 /**
- * Invisible Turnstile – runs Cloudflare security check silently.
- * No widget is visible to the user.
+ * Turnstile security widget shared by the public forms.
  * Calls onToken(token) when verification succeeds.
  * Calls onToken("") when expired or errored.
  */
@@ -35,7 +34,8 @@ export default function Turnstile({ onToken }) {
 
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
-        appearance: "interaction-only",
+        size: "flexible",
+        appearance: "always",
         execution: "render",
 
         callback: (token) => {
@@ -83,12 +83,10 @@ export default function Turnstile({ onToken }) {
     };
   }, []);
 
-  // Invisible container — zero size, not shown to the user
   return (
     <div
       ref={containerRef}
-      aria-hidden="true"
-      style={{ position: "absolute", width: 0, height: 0, overflow: "hidden", opacity: 0 }}
+      style={{ width: "100%", minHeight: 65 }}
     />
   );
 }
