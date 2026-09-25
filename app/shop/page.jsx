@@ -7,7 +7,6 @@ import { useSearchParams } from "next/navigation";
 import {
   Search,
   SlidersHorizontal,
-  Star,
   Check,
   Truck,
   ShieldCheck,
@@ -805,18 +804,11 @@ function ShopContent() {
                       </button>
                     </Link>
 
-                    {/* Brand & Rating */}
-                    <div className="flex items-center justify-between text-xs text-slate-500 mb-1.5">
+                    {/* Brand */}
+                    <div className="mb-1.5 flex items-center text-xs text-slate-500">
                       <span className="font-semibold text-slate-400">
                         {product.brand}
                       </span>
-                      <div className="flex items-center gap-1 text-amber-500 font-bold">
-                        <Star size={13} className="fill-amber-400 text-amber-400" />
-                        <span>{product.rating}</span>
-                        <span className="text-slate-400 font-normal">
-                          ({product.reviewsCount})
-                        </span>
-                      </div>
                     </div>
 
                     {/* Product Name - Links to Product Details */}
@@ -1035,9 +1027,6 @@ function ShopContent() {
                     <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-bold text-brand-600">
                       {quickViewProduct.badge || "Verified"}
                     </span>
-                    <span className="text-xs text-slate-400">
-                      SKU: {String(quickViewProduct.id).slice(0, 10).toUpperCase()}
-                    </span>
                   </div>
 
                   <Link
@@ -1058,15 +1047,6 @@ function ShopContent() {
                     <span>Open complete product details</span>
                     <ArrowRight size={13} />
                   </Link>
-
-                  <div className="mt-2 flex items-center gap-2 text-xs text-slate-500">
-                    <div className="flex items-center text-amber-500 font-bold">
-                      <Star size={14} className="fill-amber-400 text-amber-400 mr-1" />
-                      {quickViewProduct.rating}
-                    </div>
-                    <span>•</span>
-                    <span>{quickViewProduct.reviewsCount} verified customer reviews</span>
-                  </div>
 
                   <div className="mt-4 flex items-baseline gap-3">
                     <span className="text-3xl font-extrabold text-slate-900">

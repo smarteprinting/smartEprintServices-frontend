@@ -11,7 +11,6 @@ import {
   Minus,
   Plus,
   ShoppingCart,
-  Star,
   Truck,
   RotateCcw,
   ShieldCheck,
@@ -57,6 +56,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     if (!params?.id) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
     fetch(`/api/products/${params.id}`, { cache: "no-store" })
       .then((response) => response.json().then((data) => ({ response, data })))
       .then(({ response, data }) => {
@@ -200,9 +200,6 @@ export default function ProductDetailPage() {
               <span className="rounded-md bg-blue-50 px-3 py-2 text-[10px] font-bold text-brand-600">
                 {product.brand}
               </span>
-              <span className="rounded-md bg-slate-100 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                {product.category}
-              </span>
             </div>
             <h1 className="mt-5 break-words text-2xl font-black leading-tight tracking-tight sm:text-4xl">
               {product.name}
@@ -257,9 +254,6 @@ export default function ProductDetailPage() {
                     <Plus size={14} />
                   </button>
                 </div>
-                <span className="text-xs text-slate-400">
-                  {product.countInStock || 0} available
-                </span>
               </div>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -417,17 +411,6 @@ export default function ProductDetailPage() {
                       >
                         <div className="flex items-center justify-between">
                           <b>{review.author || "Verified customer"}</b>
-                          <span className="flex text-amber-500">
-                            {Array.from({ length: review.rating || 5 }).map(
-                              (_, star) => (
-                                <Star
-                                  key={star}
-                                  size={14}
-                                  fill="currentColor"
-                                />
-                              ),
-                            )}
-                          </span>
                         </div>
                         <p className="mt-3 text-sm leading-6 text-slate-600">
                           {review.text}

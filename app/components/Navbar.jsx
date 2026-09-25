@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Menu,
   X,
@@ -60,6 +60,7 @@ export default function Navbar() {
   const timeoutRef = useRef(null);
 
   const router = useRouter();
+  const pathname = usePathname();
   const { totalItems, openCart } = useCart();
   const { user, loading } = useAuth();
 
@@ -116,6 +117,15 @@ export default function Navbar() {
     setShopDropdownOpen(false);
   };
 
+  const isActive = (href) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+
+  const navLinkClass = (href) =>
+    `group relative text-[15px] font-semibold transition-colors duration-300 ${isActive(href) ? "text-brand-600" : "text-slate-700 hover:text-brand-500"}`;
+
+  const mobileLinkClass = (href) =>
+    `rounded-2xl px-4 py-3 text-base font-semibold transition ${isActive(href) ? "bg-brand-50 text-brand-600" : "text-slate-700 hover:bg-brand-50 hover:text-brand-600"}`;
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-3 px-6 py-3">
@@ -137,18 +147,18 @@ export default function Navbar() {
           <nav className="flex items-center gap-7">
             <Link
               href="/"
-              className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
+              className={navLinkClass("/")}
             >
               Home
-              <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
+              <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/") ? "w-full" : "w-0 group-hover:w-full"}`} />
             </Link>
 
             <Link
               href="/about"
-              className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
+              className={navLinkClass("/about")}
             >
               About
-              <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
+              <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/about") ? "w-full" : "w-0 group-hover:w-full"}`} />
             </Link>
 
             {/* SHOP WITH FLYOUT DROPDOWN POPUP */}
@@ -161,10 +171,10 @@ export default function Navbar() {
               <div className="flex items-center gap-1">
                 <Link
                   href="/shop"
-                  className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
+                  className={navLinkClass("/shop")}
                 >
                   Shop
-                  <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
+                  <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/shop") ? "w-full" : "w-0 group-hover:w-full"}`} />
                 </Link>
                 <button
                   type="button"
@@ -265,18 +275,18 @@ export default function Navbar() {
 
             <Link
               href="/book-an-appointment"
-              className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
+              className={navLinkClass("/book-an-appointment")}
             >
               Book an Appointment
-              <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
+              <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/book-an-appointment") ? "w-full" : "w-0 group-hover:w-full"}`} />
             </Link>
 
             <Link
               href="/contact-us"
-              className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
+              className={navLinkClass("/contact-us")}
             >
               Contact Us
-              <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
+              <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/contact-us") ? "w-full" : "w-0 group-hover:w-full"}`} />
             </Link>
           </nav>
 
@@ -351,7 +361,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={closeMenu}
-              className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-600"
+              className={mobileLinkClass("/")}
             >
               Home
             </Link>
@@ -359,7 +369,7 @@ export default function Navbar() {
             <Link
               href="/about"
               onClick={closeMenu}
-              className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-600"
+              className={mobileLinkClass("/about")}
             >
               About
             </Link>
@@ -369,7 +379,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileShopOpen((prev) => !prev)}
-                className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-base font-bold text-slate-800 transition hover:text-brand-600"
+                className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-base font-bold transition ${isActive("/shop") ? "text-brand-600" : "text-slate-800 hover:text-brand-600"}`}
               >
                 <span className="flex items-center gap-2">
                   <ShoppingBag size={18} className="text-brand-500" />
@@ -433,7 +443,7 @@ export default function Navbar() {
             <Link
               href="/book-an-appointment"
               onClick={closeMenu}
-              className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-600"
+              className={mobileLinkClass("/book-an-appointment")}
             >
               Book an Appointment
             </Link>
@@ -441,7 +451,7 @@ export default function Navbar() {
             <Link
               href="/contact-us"
               onClick={closeMenu}
-              className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-600"
+              className={mobileLinkClass("/contact-us")}
             >
               Contact Us
             </Link>
