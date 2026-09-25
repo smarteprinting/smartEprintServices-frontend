@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowRight, Mail, User, Hash, HelpCircle, MessageSquare } from "lucide-react";
 import Turnstile from "../../components/Turnstile";
 import { apiFetch as fetch } from "../../lib/api";
@@ -25,6 +25,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
   const [statusMessage, setStatusMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileExecuteRef = useRef(null);
   const [honeypot, setHoneypot] = useState("");
 
   const handleChange = (e) => {
@@ -39,9 +40,9 @@ export default function ContactForm() {
     setStatus("loading");
     setStatusMessage("");
 
-    if (!turnstileToken) {
+    if (!turnstileExecuteRef.current) {
       setStatus("error");
-      setStatusMessage("Please complete the security check and try again.");
+      setStatusMessage("Security verification is unavailable. Please try again.");
       return;
     }
 
@@ -56,6 +57,14 @@ export default function ContactForm() {
       .join("\n");
 
     try {
+      setTurnstileToken("");
+      const verifiedToken = await turnstileExecuteRef.current();
+      if (!verifiedToken) {
+        setStatus("error");
+        setStatusMessage("Security verification failed. Please try again.");
+        return;
+      }
+
       const response = await fetch("/api/contact/", {
         method: "POST",
         headers: {
@@ -65,7 +74,7 @@ export default function ContactForm() {
           fullName: formData.fullName,
           email: formData.email,
           message: formattedMessage,
-          turnstileToken,
+          turnstileToken: verifiedToken,
           honeypot,
         }),
       });
@@ -240,7 +249,7 @@ export default function ContactForm() {
         </div>
 
         {/* Cloudflare Turnstile invisible security - no UI shown */}
-        <Turnstile onToken={setTurnstileToken} />
+        <Turnstile onToken={setTurnstileToken} onReady={(execute) => { turnstileExecuteRef.current = execute; }} />
 
         {/* Submit */}
         <button

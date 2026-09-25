@@ -9,12 +9,15 @@ const SCRIPT_ID = "cloudflare-smarteprintservices-ok-turnstile-script";
  * Calls onToken(token) when verification succeeds.
  * Calls onToken("") when expired or errored.
  */
-export default function Turnstile({ onToken }) {
+export default function Turnstile({ onToken, onReady }) {
   const containerRef = useRef(null);
   const widgetIdRef = useRef(null);
   const onTokenRef = useRef(onToken);
+  const onReadyRef = useRef(onReady);
+  const pendingResolveRef = useRef(null);
 
   onTokenRef.current = onToken;
+  onReadyRef.current = onReady;
 
   useEffect(() => {
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
@@ -34,11 +37,13 @@ export default function Turnstile({ onToken }) {
 
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
-        appearance: "always",
-        execution: "render",
+        size: "invisible",
+        execution: "execute",
 
         callback: (token) => {
           onTokenRef.current(token);
+          pendingResolveRef.current?.(token);
+          pendingResolveRef.current = null;
         },
 
         "expired-callback": () => {
@@ -47,12 +52,21 @@ export default function Turnstile({ onToken }) {
           if (widgetIdRef.current !== null && window.turnstile) {
             window.turnstile.reset(widgetIdRef.current);
           }
+          pendingResolveRef.current?.("");
+          pendingResolveRef.current = null;
         },
 
         "error-callback": () => {
           onTokenRef.current("");
+          pendingResolveRef.current?.("");
+          pendingResolveRef.current = null;
         },
       });
+
+      onReadyRef.current?.(() => new Promise((resolve) => {
+        pendingResolveRef.current = resolve;
+        window.turnstile.execute(widgetIdRef.current);
+      }));
     };
 
     const existingScript = document.getElementById(SCRIPT_ID);
@@ -79,6 +93,8 @@ export default function Turnstile({ onToken }) {
         window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
+      pendingResolveRef.current?.("");
+      pendingResolveRef.current = null;
     };
   }, []);
 
@@ -86,11 +102,12 @@ export default function Turnstile({ onToken }) {
     <div
       ref={containerRef}
       style={{
-        minHeight: 65,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        margin: "8px 0",
+        position: "absolute",
+        width: 1,
+        height: 1,
+        overflow: "hidden",
+        opacity: 0,
+        pointerEvents: "none",
       }}
     />
   );

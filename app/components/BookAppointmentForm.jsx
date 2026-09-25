@@ -37,6 +37,7 @@ export default function BookAppointmentForm() {
   const [status, setStatus] = useState("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileExecuteRef = useRef(null);
   const [honeypot, setHoneypot] = useState("");
   const [countrySearch, setCountrySearch] = useState("");
   const [countryOpen, setCountryOpen] = useState(false);
@@ -76,19 +77,27 @@ export default function BookAppointmentForm() {
 
     setStatus("loading");
 
-    if (!turnstileToken) {
+    if (!turnstileExecuteRef.current) {
       setStatus("error");
-      setStatusMessage("Please complete the security check and try again.");
+      setStatusMessage("Security verification is unavailable. Please try again.");
       return;
     }
 
     try {
+      setTurnstileToken("");
+      const verifiedToken = await turnstileExecuteRef.current();
+      if (!verifiedToken) {
+        setStatus("error");
+        setStatusMessage("Security verification failed. Please try again.");
+        return;
+      }
+
       const response = await fetch("/api/book-appointment/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, phone: `${country.callingCode} ${formData.phone}`, turnstileToken, honeypot }),
+        body: JSON.stringify({ ...formData, phone: `${country.callingCode} ${formData.phone}`, turnstileToken: verifiedToken, honeypot }),
       });
 
       const data = await response.json();
@@ -288,7 +297,7 @@ export default function BookAppointmentForm() {
         </div>
 
         {/* Cloudflare Turnstile invisible security - no UI shown */}
-        <Turnstile onToken={setTurnstileToken} />
+        <Turnstile onToken={setTurnstileToken} onReady={(execute) => { turnstileExecuteRef.current = execute; }} />
 
         {/* Submit Button */}
         <div className="sm:col-span-2 mt-0.5">
