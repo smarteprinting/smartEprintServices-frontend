@@ -34,7 +34,7 @@ export default function Turnstile({ onToken }) {
 
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
-        appearance: "interaction-only",
+        appearance: "always",
         execution: "render",
 
         callback: (token) => {
@@ -85,14 +85,12 @@ export default function Turnstile({ onToken }) {
   return (
     <div
       ref={containerRef}
-      aria-hidden="true"
       style={{
-        position: "absolute",
-        width: 1,
-        height: 1,
-        overflow: "hidden",
-        opacity: 0,
-        pointerEvents: "none",
+        minHeight: 65,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "8px 0",
       }}
     />
   );
