@@ -15,6 +15,7 @@ export default function Turnstile({ onToken, onReady }) {
   const onTokenRef = useRef(onToken);
   const onReadyRef = useRef(onReady);
   const pendingResolveRef = useRef(null);
+  const pendingRejectRef = useRef(null);
 
   onTokenRef.current = onToken;
   onReadyRef.current = onReady;
@@ -37,13 +38,14 @@ export default function Turnstile({ onToken, onReady }) {
 
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
-        size: "invisible",
+        appearance: "interaction-only",
         execution: "execute",
 
         callback: (token) => {
           onTokenRef.current(token);
           pendingResolveRef.current?.(token);
           pendingResolveRef.current = null;
+          pendingRejectRef.current = null;
         },
 
         "expired-callback": () => {
@@ -54,17 +56,20 @@ export default function Turnstile({ onToken, onReady }) {
           }
           pendingResolveRef.current?.("");
           pendingResolveRef.current = null;
+          pendingRejectRef.current = null;
         },
 
         "error-callback": () => {
           onTokenRef.current("");
-          pendingResolveRef.current?.("");
+          pendingRejectRef.current?.(new Error("Turnstile verification failed."));
           pendingResolveRef.current = null;
+          pendingRejectRef.current = null;
         },
       });
 
-      onReadyRef.current?.(() => new Promise((resolve) => {
+      onReadyRef.current?.(() => new Promise((resolve, reject) => {
         pendingResolveRef.current = resolve;
+        pendingRejectRef.current = reject;
         window.turnstile.execute(widgetIdRef.current);
       }));
     };
@@ -93,14 +98,15 @@ export default function Turnstile({ onToken, onReady }) {
         window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
-      pendingResolveRef.current?.("");
       pendingResolveRef.current = null;
+      pendingRejectRef.current = null;
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
+      aria-hidden="true"
       style={{
         position: "absolute",
         width: 1,
