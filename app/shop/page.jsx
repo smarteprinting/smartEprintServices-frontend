@@ -10,7 +10,6 @@ import {
   Check,
   Truck,
   ShieldCheck,
-  Wrench,
   Sparkles,
   Eye,
   ShoppingCart,
@@ -111,14 +110,14 @@ const categoryHeroData = {
     badgeColor: "text-blue-300 border-blue-400/10 bg-blue-500/20",
     title: "HP Printers, Toners &",
     gradientTitle: "Smart Hardware Catalog",
-    desc: "Purchase authentic HP laser printers, wireless inkjets, high-capacity supertanks, and original supplies with manufacturer warranties, rapid delivery, and certified setup support.",
+    desc: "Purchase authentic HP laser printers, wireless inkjets, high-capacity supertanks, and original supplies with manufacturer warranties, rapid delivery, and dedicated customer support.",
     bgImage: "/bg-hero.webp",
     featuredImage: "/services.png",
     accentGrad: "from-[#024AD8] via-[#023b9f] to-[#011f59]",
     badgeHighlights: [
       { icon: Truck, text: "Free Shipping Over $49", color: "text-blue-400" },
       { icon: ShieldCheck, text: "Official HP Hardware Warranty", color: "text-emerald-400" },
-      { icon: Wrench, text: "On-Site Setup Available", color: "text-amber-400" },
+      { icon: Sparkles, text: "Genuine OEM Supplies", color: "text-amber-400" },
     ],
     sideTag: "HP Storefront",
     sideSubtitle: "Hardware & Supplies",
@@ -259,22 +258,43 @@ function ShopContent() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.products) && data.products.length > 0) {
-          const hpProducts = data.products.filter((product) => {
-            const brand = (product.brand || "").toLowerCase();
-            const name = (product.name || product.title || "").toLowerCase();
-            return (brand === "hp" || name.includes("hp")) && product.image;
-          });
+          const hpProducts = data.products
+            .filter((product) => {
+              const brand = (product.brand || "").toLowerCase();
+              const name = (product.name || product.title || "").toLowerCase();
+              return (brand === "hp" || name.includes("hp")) && product.image;
+            })
+            .map((product) => {
+              const stock = Number(product.countInStock ?? product.stockCount ?? 15);
+              const inStock = product.inStock !== undefined ? Boolean(product.inStock) : stock > 0;
+              return {
+                ...product,
+                stockCount: stock,
+                countInStock: stock,
+                inStock,
+              };
+            });
           hpProducts.sort((a, b) => getProductPriority(b) - getProductPriority(a));
           setCatalogProducts(hpProducts);
         } else {
-          const hpFallback = fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp"));
+          const hpFallback = fallbackCatalog
+            .filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp"))
+            .map((product) => ({
+              ...product,
+              inStock: product.inStock !== false,
+            }));
           hpFallback.sort((a, b) => getProductPriority(b) - getProductPriority(a));
           setCatalogProducts(hpFallback);
         }
       })
       .catch((err) => {
         console.warn("Could not fetch live products from API:", err);
-        const hpFallback = fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp"));
+        const hpFallback = fallbackCatalog
+          .filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp"))
+          .map((product) => ({
+            ...product,
+            inStock: product.inStock !== false,
+          }));
         hpFallback.sort((a, b) => getProductPriority(b) - getProductPriority(a));
         setCatalogProducts(hpFallback);
       });
@@ -851,8 +871,10 @@ function ShopContent() {
                           ${product.price.toFixed(2)}
                         </span>
                       </div>
-                      <span className="text-[11px] font-semibold text-emerald-600">
-                        {product.inStock ? "In Stock" : "Out of Stock"}
+                      <span className={`text-[11px] font-semibold ${
+                        product.inStock !== false ? "text-emerald-600" : "text-rose-500"
+                      }`}>
+                        {product.inStock !== false ? "In Stock" : "Out of Stock"}
                       </span>
                     </div>
 
@@ -860,7 +882,8 @@ function ShopContent() {
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         onClick={() => addToCart(product, 1, true)}
-                        className="flex items-center justify-center gap-1.5 rounded-xl border border-brand-500 bg-white py-2.5 text-xs font-bold text-brand-500 transition hover:bg-brand-50 active:scale-95 shadow-sm"
+                        disabled={product.inStock === false}
+                        className="flex items-center justify-center gap-1.5 rounded-xl border border-brand-500 bg-white py-2.5 text-xs font-bold text-brand-500 transition hover:bg-brand-50 active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <ShoppingCart size={14} />
                         <span>Add to Cart</span>
@@ -868,10 +891,11 @@ function ShopContent() {
 
                       <button
                         onClick={() => handleDirectBuy(product)}
-                        className="flex items-center justify-center gap-1.5 rounded-xl bg-brand-500 py-2.5 text-xs font-bold text-white shadow-md shadow-brand-500/20 transition hover:bg-brand-700 active:scale-95"
+                        disabled={product.inStock === false}
+                        className="flex items-center justify-center gap-1.5 rounded-xl bg-brand-500 py-2.5 text-xs font-bold text-white shadow-md shadow-brand-500/20 transition hover:bg-brand-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <Zap size={14} className="fill-white" />
-                        <span>Buy Now</span>
+                        <span>{product.inStock !== false ? "Buy Now" : "Unavailable"}</span>
                       </button>
                     </div>
                   </div>
@@ -897,10 +921,10 @@ function ShopContent() {
         <section className="mt-16 rounded-3xl border border-slate-200 bg-white p-8 lg:p-10 shadow-sm">
           <div className="text-center max-w-xl mx-auto mb-10">
             <h2 className="text-2xl font-bold text-slate-900">
-              Why Buy Hardware Through SmartEprint?
+              Why Buy Hardware Through Smart ePrint Services?
             </h2>
             <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-              We combine hardware sales with nationwide technical support to ensure your printer works flawlessly from day one.
+              We offer genuine printers, original supplies, transparent pricing, and fast nationwide delivery to keep your home or office running smoothly.
             </p>
           </div>
 
@@ -931,13 +955,13 @@ function ShopContent() {
 
             <div className="flex flex-col items-center text-center p-4">
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-600">
-                <Wrench size={28} />
+                <Sparkles size={28} />
               </div>
               <h4 className="text-base font-bold text-slate-900">
-                On-Site Setup Assistance
+                Genuine OEM Guarantee
               </h4>
               <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Add certified technician setup at checkout to connect all computers and Wi-Fi networks in your location.
+                All printers, scanners, ink cartridges, and toners are brand-new, factory-sealed, and 100% authentic.
               </p>
             </div>
 
@@ -1155,7 +1179,7 @@ export default function ShopPage() {
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand-500 border-r-transparent" />
             <p className="mt-3 text-sm font-semibold text-slate-600">
-              Loading SmartEprint Hardware Store...
+              Loading Smart ePrint Services Hardware Store...
             </p>
           </div>
         </div>

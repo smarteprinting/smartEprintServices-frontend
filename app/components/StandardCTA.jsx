@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShoppingBag } from "lucide-react";
 
 export default function StandardCTA() {
   return (
@@ -15,32 +15,33 @@ export default function StandardCTA() {
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div>
             <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-100 backdrop-blur-md">
-              Need Professional Assistance?
+              Upgrade Your Printing Setup
             </span>
 
             <h2 className="mt-5 text-4xl font-extrabold leading-tight text-white lg:text-5xl xl:text-6xl">
-              Ready to Get
-              <span className="block text-blue-200">On-Site Assistance?</span>
+              Find the Perfect
+              <span className="block text-blue-200">Printer &amp; Supplies</span>
             </h2>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-blue-100/90 lg:text-lg">
-              SmartEprint Services provides professional support for printer setup, connectivity, computer configuration, and everyday technology issues. Schedule a consultation and let our experienced team assist you with practical, reliable solutions.
+              Smart ePrint Services is your trusted online retailer for top-tier home and office printers, high-resolution document scanners, and genuine OEM ink &amp; toner. Enjoy competitive pricing, manufacturer warranty protection, and fast delivery nationwide.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/contact-us"
+                href="/shop"
                 className="group inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-base font-bold text-[#024AD8] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
-                Schedule Consultation
+                <ShoppingBag size={18} className="mr-2" />
+                Shop Printers &amp; Scanners
                 <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               <Link
-                href="/services"
+                href="/contact-us"
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#024AD8]"
               >
-                Explore Services
+                Contact Sales &amp; Support
               </Link>
             </div>
           </div>
@@ -50,7 +51,7 @@ export default function StandardCTA() {
             <div className="relative overflow-hidden rounded-3xl">
               <img
                 src="/customer-care.jpg"
-                alt="Customer Support"
+                alt="Printer and Supplies Customer Support"
                 className="mx-auto w-full max-w-sm object-contain transition duration-500 hover:scale-105 lg:max-w-md"
               />
             </div>

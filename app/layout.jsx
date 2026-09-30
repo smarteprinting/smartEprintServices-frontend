@@ -1,4 +1,4 @@
-﻿import { Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import SiteLayout from './components/SiteLayout';
@@ -7,33 +7,33 @@ const inter = Inter({ subsets: ['latin'], preload: false });
 
 export const metadata = {
   metadataBase: new URL('https://smarteprintservices.com'),
-  title: 'SmartEprint Services | Printer, Scanner & Office Tech Solutions',
+  title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
   description:
-    'SmartEprint Services provides printers, scanners, office technology, and on-site support for homes, small businesses, schools, and organizations across the USA.',
+    'Smart ePrint Services is an online retailer offering printers, scanners, ink, toner, accessories, and office printing supplies across the USA. Owned and operated by Innovation Dynamics Group LLC.',
   keywords: [
     'printer store',
     'scanner store',
-    'office printers',
-    'printer installation',
+    'buy printers online',
+    'ink and toner cartridges',
     'laser printer',
     'all-in-one printer',
     'business printing solutions',
-    'smart print services',
-    'on-site technology support',
+    'genuine printer supplies',
+    'online printer retailer',
   ],
-  applicationName: 'SmartEprint Services',
-  authors: [{ name: 'SmartEprint Services' }],
-  creator: 'SmartEprint Services',
-  publisher: 'SmartEprint Services',
+  applicationName: 'Smart ePrint Services',
+  authors: [{ name: 'Smart ePrint Services' }],
+  creator: 'Innovation Dynamics Group LLC',
+  publisher: 'Innovation Dynamics Group LLC',
   alternates: {
     canonical: 'https://smarteprintservices.com',
   },
   openGraph: {
-    title: 'SmartEprint Services | Printer, Scanner & Office Tech Solutions',
+    title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
     description:
-      'Shop printers, scanners, and office tech solutions with expert guidance, fast shipping, and on-site support across the United States.',
+      'Shop genuine printers, document scanners, original ink & toner cartridges, and printing accessories across the United States. Owned and operated by Innovation Dynamics Group LLC.',
     url: 'https://smarteprintservices.com',
-    siteName: 'SmartEprint Services',
+    siteName: 'Smart ePrint Services',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -41,15 +41,15 @@ export const metadata = {
         url: 'https://smarteprintservices.com/hero-printer-clean.avif',
         width: 1200,
         height: 630,
-        alt: 'SmartEprint Services printers and office technology',
+        alt: 'Smart ePrint Services printers and office technology',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SmartEprint Services | Printer, Scanner & Office Tech Solutions',
+    title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
     description:
-      'Explore reliable printer, scanner, and office technology solutions for home offices, businesses, and organizations.',
+      'Explore reliable printers, scanners, ink, toner, and accessories for home offices and businesses. Fast US shipping.',
     images: ['https://smarteprintservices.com/hero-printer-clean.avif'],
   },
   icons: {
@@ -92,6 +92,46 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
         />
         <SiteLayout>{children}</SiteLayout>
+
+        {/* Organization structured data — Online Retailer */}
+        <Script
+          id="org-structured-data"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Smart ePrint Services",
+              "alternateName": "SmartEprint Services",
+              "legalName": "Innovation Dynamics Group LLC",
+              "url": "https://smarteprintservices.com",
+              "logo": "https://smarteprintservices.com/logo.png",
+              "description": "Smart ePrint Services is an independent online retailer selling printers, scanners, ink, toner, and printing accessories across the United States. Owned and operated by Innovation Dynamics Group LLC, an HP Authorized Reseller.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "11397 Quincy St NE",
+                "addressLocality": "Blaine",
+                "addressRegion": "MN",
+                "postalCode": "55434",
+                "addressCountry": "US"
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+1-877-765-2289",
+                  "contactType": "customer service",
+                  "areaServed": "US",
+                  "availableLanguage": "English"
+                }
+              ],
+              "email": "support@smarteprintservices.com",
+              "sameAs": [
+                "https://www.smarteprintservices.com"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );

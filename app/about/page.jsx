@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import {
   Printer,
   ScanLine,
@@ -32,7 +32,7 @@ const whyUs = [
   { icon: ShieldCheck, title: "Quality Products", desc: "We carefully select printers and scanners from trusted manufacturers known for reliability and long-term performance.", color: "#0f6cff" },
   { icon: Truck, title: "Reliable US Shipping", desc: "We partner with trusted carriers to ensure your equipment arrives safely and on time, coast to coast.", color: "#10b981" },
   { icon: Lock, title: "Secure Shopping", desc: "Your transactions are protected with industry-standard SSL encryption and secure payment gateways.", color: "#8b5cf6" },
-  { icon: Headphones, title: "Dedicated Support", desc: "Our expert team is available to answer questions about products, compatibility, and post-purchase setup.", color: "#f59e0b" },
+  { icon: Headphones, title: "Dedicated Support", desc: "Our expert team is available to answer questions about products, compatibility, and post-purchase customer care.", color: "#f59e0b" },
 ];
 
 const productTypes = [
@@ -49,8 +49,8 @@ const businessHours = [
 ];
 
 export const metadata = {
-  title: "About Us | SmartEprint Services \u2014 Printing & Scanning Solutions",
-  description: "Learn about SmartEprint Services, your trusted online destination for professional printing and scanning solutions across the United States.",
+  title: "About Us | Smart ePrint Services — Printing & Scanning Solutions",
+  description: "Learn about Smart ePrint Services, your trusted online destination for professional printing and scanning solutions across the United States.",
 };
 
 export default function AboutPage() {
@@ -65,7 +65,7 @@ export default function AboutPage() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/30 bg-[#024AD8]/30 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-blue-100 backdrop-blur-md mb-6">
               <Sparkles className="h-3.5 w-3.5 text-sky-400" />
-              <span>About SmartEprint Services</span>
+              <span>About Smart ePrint Services</span>
             </div>
             <h1 className="text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl leading-tight">
               Your Trusted Online Destination for Professional Printing &amp; Scanning Solutions
@@ -92,15 +92,15 @@ export default function AboutPage() {
             <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#0f6cff]">Who We Are</span>
             <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl leading-tight">Your Partner in Printing Excellence</h2>
             <p className="mt-5 text-sm leading-relaxed text-slate-600">
-              SmartEprint Services is a specialized online retailer dedicated to providing high-quality printers and scanners to customers throughout the United States. Founded with a vision to simplify the process of finding the right printing and scanning solutions, we have grown to become a trusted name in the industry.
+              Smart ePrint Services is a specialized online retailer dedicated to providing high-quality printers and scanners to customers throughout the United States. Founded with a vision to simplify the process of finding the right printing and scanning solutions, we have grown to become a trusted name in the industry.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
               Our team consists of e-commerce professionals and printing technology experts. We combine our technical knowledge with a passion for customer service to deliver a smooth shopping experience. Each team member brings years of experience in the printing industry, allowing us to provide accurate product information and genuine recommendations.
             </p>
             <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-              <AlertTriangle className="h-4 w-4 text-amber-600 mt-0.5 shrink-0" />
-              <p className="text-xs leading-relaxed text-amber-800">
-                <strong>Important Note:</strong> SmartEprint Services is an independent retailer. We are not affiliated with, endorsed by, or sponsored by HP, Canon, Epson, Brother, or any other manufacturer. We source products from trusted brands and offer them at competitive prices.
+              <AlertTriangle className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+              <p className="text-xs leading-relaxed text-blue-900">
+                <strong>Business Note:</strong> Smart ePrint Services is an online retailer owned and operated by Innovation Dynamics Group LLC. Innovation Dynamics Group LLC is an HP Authorized Reseller. All products sold are brand-new, factory-sealed, and backed by standard manufacturer warranties.
               </p>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
               <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-sky-300">Our Mission</span>
               <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl leading-tight">Simplifying Your Printing Needs</h2>
               <p className="mt-5 text-sm leading-relaxed text-blue-100">
-                At SmartEprint Services, our mission is to make finding the right printing and scanning equipment as simple and stress-free as possible. We understand that navigating the world of printers and scanners can be overwhelming, especially with the vast array of options available today.
+                At Smart ePrint Services, our mission is to make finding the right printing and scanning equipment as simple and stress-free as possible. We understand that navigating the world of printers and scanners can be overwhelming, especially with the vast array of options available today.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-blue-100">
                 That&apos;s why we&apos;ve curated a carefully selected catalog of products that offer genuine value and reliability. Rather than overwhelming you with endless choices, we focus on presenting strong options across different price points and use cases.
@@ -180,7 +180,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#0f6cff]">Why Choose Us</span>
-            <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">Why Choose SmartEprint Services?</h2>
+            <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">Why Choose Smart ePrint Services?</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-500">We&apos;re committed to providing a smooth shopping experience from browsing to delivery.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -207,13 +207,13 @@ export default function AboutPage() {
             <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#0f6cff]">Our Team</span>
             <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl leading-tight">Here to Help</h2>
             <p className="mt-5 text-sm leading-relaxed text-slate-600">
-              At the heart of SmartEprint Services is our dedicated team of product researchers and technology experts. We take pride in staying up-to-date with the latest developments in printing technology to provide you with accurate, current information and recommendations.
+              At the heart of Smart ePrint Services is our dedicated team of product researchers and technology experts. We take pride in staying up-to-date with the latest developments in printing technology to provide you with accurate, current information and recommendations.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
               Whether you have questions about product specifications, need help choosing between models, or require assistance with your order, we&apos;re here to help. We aim to respond to all inquiries within 24 business hours.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
-              We believe that good service doesn&apos;t end at checkout. We&apos;re available to help with product compatibility questions, setup guidance, and general inquiries even after your purchase. Your satisfaction is our priority.
+              We believe that good service doesn&apos;t end at checkout. We&apos;re available to help with product compatibility questions, order tracking, and general retail inquiries even after your purchase. Your satisfaction is our priority.
             </p>
             <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-4 py-2 text-xs font-bold text-emerald-700">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -244,7 +244,7 @@ export default function AboutPage() {
                 {[
                   { label: "Primary Market", value: "United States" },
                   { label: "Shipping", value: "Continental US, Alaska & Hawaii" },
-                  { label: "Headquarters", value: "3343 Santa Fe St Ste A, Riverbank, CA 95367" },
+                  { label: "Headquarters", value: "11397 Quincy St NE, Blaine, MN 55434" },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between items-start py-2.5 border-b border-slate-100 last:border-0">
                     <span className="text-xs font-semibold text-slate-500">{label}</span>

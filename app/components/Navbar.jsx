@@ -25,7 +25,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   // "Shop" is rendered separately with dropdown popup
-  { href: "/book-an-appointment", label: "Book an Appointment" },
+  { href: "/faqs", label: "FAQs" },
   { href: "/contact-us", label: "Contact Us" },
 ];
 
@@ -129,12 +129,12 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-3 px-6 py-3">
-        <Link href="/" className="flex items-center gap-3" aria-label="SmartEprint Services Home">
+        <Link href="/" className="flex items-center gap-3" aria-label="Smart ePrint Services Home">
           <div className="flex h-12 w-auto items-center justify-center p-1">
             <Image 
               src="/logo.png" 
               width={100}
-              alt="SmartEprint Logo"
+              alt="Smart ePrint Services Logo"
               height={56} 
               priority
               className="h-full w-auto"
@@ -274,11 +274,11 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/book-an-appointment"
-              className={navLinkClass("/book-an-appointment")}
+              href="/faqs"
+              className={navLinkClass("/faqs")}
             >
-              Book an Appointment
-              <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/book-an-appointment") ? "w-full" : "w-0 group-hover:w-full"}`} />
+              FAQs
+              <span className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-brand-500 transition-all duration-300 ${isActive("/faqs") ? "w-full" : "w-0 group-hover:w-full"}`} />
             </Link>
 
             <Link
@@ -441,11 +441,11 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/book-an-appointment"
+              href="/faqs"
               onClick={closeMenu}
-              className={mobileLinkClass("/book-an-appointment")}
+              className={mobileLinkClass("/faqs")}
             >
-              Book an Appointment
+              FAQs
             </Link>
 
             <Link

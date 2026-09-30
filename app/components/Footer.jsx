@@ -15,8 +15,9 @@ const shopLinks = [
 
 const helpLinks = [
   { href: "/faqs", label: "FAQs" },
-  { href: "/refund-cancellation-policy", label: "Shipping & Returns" },
-  { href: "/book-an-appointment", label: "Book an Appointment" },
+  { href: "/shipping-policy", label: "Shipping Policy" },
+  { href: "/refund-cancellation-policy", label: "Returns & Refunds" },
+  { href: "/about", label: "About Us" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
   { href: "/disclaimer", label: "Disclaimer" },
@@ -65,10 +66,10 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-4">
-          <Link href="/" aria-label="SmartEprint Services Home">
+          <Link href="/" aria-label="Smart ePrint Services Home">
             <Image
               src="/footer-logo.png"
-              alt="SmartEprint Services"
+              alt="Smart ePrint Services"
               width={130}
               height={44}
               priority
@@ -77,7 +78,10 @@ export default function Footer() {
           </Link>
 
           <p className="text-sm text-slate-400 leading-relaxed">
-            Shop genuine printers, original ink & toner cartridges, and accessories - delivered fast across the US.
+            Shop genuine printers, original ink & toner cartridges, and accessories — delivered fast across the US.
+          </p>
+          <p className="text-xs text-slate-500 leading-relaxed">
+            Smart ePrint Services is an online retailer owned and operated by Innovation Dynamics Group LLC.
           </p>
 
           {/* HP Partner */}
@@ -187,11 +191,13 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-slate-900 bg-[#03080f]">
         <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
-          <p>&copy; {year} Smart ePrint Services. All rights reserved. Owned &amp; Operated by <span className="text-slate-400 font-semibold">Innovation Dynamic Group LLC</span>.</p>
+          <p>&copy; {year} Smart ePrint Services. All rights reserved. Owned &amp; Operated by <span className="text-slate-400 font-semibold">Innovation Dynamics Group LLC</span>.</p>
           <div className="flex items-center flex-wrap justify-center gap-3">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy</Link>
             <span>|</span>
             <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors">Terms</Link>
+            <span>|</span>
+            <Link href="/shipping-policy" className="hover:text-slate-300 transition-colors">Shipping Policy</Link>
             <span>|</span>
             <Link href="/refund-cancellation-policy" className="hover:text-slate-300 transition-colors">Refund Policy</Link>
             <span>|</span>

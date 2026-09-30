@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -7,11 +7,11 @@ import { apiFetch as fetch } from "../lib/api";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "SmartEprint Services",
+  name: "Smart ePrint Services",
   url: "https://smarteprintservices.com",
   logo: "https://smarteprintservices.com/hero-printer-clean.avif",
   description:
-    "SmartEprint Services provides printers, scanners, office technology products, business printing solutions, and on-site support across the United States.",
+    "Smart ePrint Services is an online retailer owned and operated by Innovation Dynamics Group LLC, providing genuine printers, scanners, office printing technology, ink, toner, and accessories across the United States.",
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -72,7 +72,7 @@ const productCategories = [
       "Affordable upfront investment",
       "Supertank refillable options",
     ],
-    href: "/shop?category=inkjet",
+    href: "/shop?category=inkjet-printers",
   },
   {
     title: "High-Speed Laser Printers",
@@ -87,7 +87,7 @@ const productCategories = [
       "Razor-sharp micro-text clarity",
       "Heavy-duty monthly duty cycles",
     ],
-    href: "/shop?category=laser",
+    href: "/shop?category=laser-printers",
   },
   {
     title: "All-in-One Multi-Function",
@@ -102,7 +102,7 @@ const productCategories = [
       "Compact space-saving desktop footprint",
       "Cloud and wireless mobile printing",
     ],
-    href: "/shop?category=all-in-one",
+    href: "/shop?category=office-printers",
   },
   {
     title: "Dedicated Document Scanners",
@@ -117,7 +117,7 @@ const productCategories = [
       "Compact portable & desktop designs",
       "Receipt, card & legal paper handling",
     ],
-    href: "/shop?category=all",
+    href: "/shop",
   },
 ];
 
@@ -289,7 +289,7 @@ const faqs = [
   },
   {
     q: "Do you ship to all 50 U.S. states?",
-    a: "Yes! SmartEprint Services ships nationwide across all 50 U.S. states. We offer free standard delivery on orders over $49 within the continental United States, with expedited shipping options available at checkout.",
+    a: "Yes! Smart ePrint Services ships nationwide across all 50 U.S. states. We offer free standard delivery on orders over $49 within the continental United States, with expedited shipping options available at checkout.",
   },
   {
     q: "What is your return policy?",
@@ -297,7 +297,7 @@ const faqs = [
   },
   {
     q: "Do your products come with a warranty?",
-    a: "All equipment sold through SmartEprint Services is 100% brand new and backed by official manufacturer warranties (typically 1 to 2 years, depending on the brand and model). We also provide dedicated post-purchase setup and guidance.",
+    a: "All equipment sold through Smart ePrint Services is 100% brand new and backed by official manufacturer warranties (typically 1 to 2 years, depending on the brand and model). Our customer service team is also available to assist with order tracking and retail inquiries.",
   },
   {
     q: "How do I decide between an inkjet and a laser printer?",
@@ -313,7 +313,7 @@ const faqs = [
   },
   {
     q: "How can I contact your support team?",
-    a: "Our customer support team is available via email, phone, and our website contact form. You can also book a 1-on-1 virtual consultation or appointment for personalized recommendations and setup assistance.",
+    a: "Our customer service team is available via email, phone, and our website contact form to assist with product inquiries, order status, compatibility verification, and shipping questions.",
   },
 ];
 
@@ -334,12 +334,23 @@ export default function HomePage() {
       .then((data) => {
         if (data.success && Array.isArray(data.products) && data.products.length > 0) {
           // Filter ONLY HP products with valid images
-          const hpOnly = data.products.filter((p) => {
-            const isHp =
-              (p.brand || "").toLowerCase() === "hp" ||
-              (p.name || p.title || "").toLowerCase().includes("hp");
-            return isHp && p.image;
-          });
+          const hpOnly = data.products
+            .filter((p) => {
+              const isHp =
+                (p.brand || "").toLowerCase() === "hp" ||
+                (p.name || p.title || "").toLowerCase().includes("hp");
+              return isHp && p.image;
+            })
+            .map((p) => {
+              const stock = Number(p.countInStock ?? p.stockCount ?? 15);
+              const inStock = p.inStock !== undefined ? Boolean(p.inStock) : stock > 0;
+              return {
+                ...p,
+                stockCount: stock,
+                countInStock: stock,
+                inStock,
+              };
+            });
 
           // Sort HP printers to the top
           const sortedHp = hpOnly.sort((a, b) => {
@@ -440,7 +451,7 @@ export default function HomePage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-sky-200 backdrop-blur-md">
                 <Sparkles className="h-3 w-3 text-sky-400" />
-                <span>SmartEprint Services • Nationwide USA</span>
+                <span>Smart ePrint Services • Nationwide USA</span>
               </div>
 
               {/* Reduced Font Size Heading */}
@@ -454,9 +465,9 @@ export default function HomePage() {
 
               {/* Reduced Font Size Paragraph */}
               <p className="mt-3 max-w-lg text-xs sm:text-sm leading-relaxed text-slate-200">
-                At SmartEprint Services, we believe that everyone deserves access to reliable, high-quality printing
-                and scanning equipment. Whether you are a student, remote professional, or growing business, we take
-                the guesswork out of finding the right hardware—without confusing technical jargon.
+                Smart ePrint Services is an online retailer owned and operated by Innovation Dynamics Group LLC.
+                We provide genuine printers, scanners, office printing technology, ink, toner, and accessories across
+                the United States with dedicated customer care.
               </p>
 
               {/* Compact Action Buttons */}
@@ -508,7 +519,7 @@ export default function HomePage() {
               <div className="relative w-full max-w-md lg:max-w-lg flex items-center justify-center">
                 <img
                   src="/hero-printer-only.jpg"
-                  alt="SmartEprint Professional Printing Hardware"
+                  alt="Smart ePrint Services Professional Printing Hardware"
                   className="w-full max-h-[300px] sm:max-h-[350px] lg:max-h-[390px] object-cover rounded-3xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.55)] transition-transform duration-500 hover:scale-[1.02]"
                 />
               </div>
@@ -797,8 +808,8 @@ export default function HomePage() {
             Solutions Built for Every Sector &amp; Workflow
           </h2>
           <p className="mt-4 text-base text-slate-600 leading-relaxed">
-            SmartEprint Services proudly serves a diverse range of customers across the United States. Whether you
-            are outfitting a home workspace, a creative photography studio, or a corporate hospital floor, we have
+            Smart ePrint Services proudly serves a diverse range of customers across the United States. Whether you
+            are outfitting a home workspace, a creative photography studio, or a corporate office, we have
             tailored equipment built for your exact demands.
           </p>
         </div>
@@ -845,10 +856,10 @@ export default function HomePage() {
                 Why Choose Us
               </span>
               <h2 className="mt-3 text-3xl font-black sm:text-5xl leading-tight">
-                The SmartEprint Advantage.
+                The Smart ePrint Advantage.
               </h2>
               <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-                We're more than just an equipment store—we're your trusted long-term printing technology partner.
+                We&apos;re an independent online retailer dedicated to reliable printing technology.
                 Our team takes the guesswork out of hardware selection with honest buying advice, genuine brand
                 stock, and dedicated nationwide customer care.
               </p>
@@ -904,7 +915,7 @@ export default function HomePage() {
             How Getting Equipment Works
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Getting your new printer or scanner is seamless and straightforward with SmartEprint Services.
+            Getting your new printer or scanner is seamless and straightforward with Smart ePrint Services.
           </p>
         </div>
 
@@ -1049,7 +1060,7 @@ export default function HomePage() {
               </div>
 
               <p className="text-sm leading-relaxed text-slate-600 mb-6">
-                SmartEprint Services ships from certified distribution partners across the United States. We work to
+                Smart ePrint Services ships from certified distribution partners across the United States. We work to
                 get your equipment to you as swiftly and securely as possible.
               </p>
 
@@ -1065,7 +1076,7 @@ export default function HomePage() {
                 <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100">
                   <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
                   <span>
-                    <strong>5 to 7 business days</strong> standard delivery time depending on your destination.
+                    <strong>2 to 3 business days</strong> estimated standard transit in continental US (5 to 7 days for AK/HI).
                   </span>
                 </div>
 
@@ -1145,7 +1156,7 @@ export default function HomePage() {
                   <div>
                     <h4 className="text-xs font-bold text-slate-900">Prompt Inspection &amp; Refund</h4>
                     <p className="text-xs text-slate-600 mt-0.5">
-                      Once received and checked, your full refund is processed back to your original payment in 5 to 10 days.
+                      Once received and inspected, your refund is processed back to your original payment method in 5 to 10 business days as detailed in our Return Policy.
                     </p>
                   </div>
                 </div>
@@ -1226,7 +1237,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 13. NEWSLETTER & FINAL CONSULTATION CALL TO ACTION */}
+      {/* 13. NEWSLETTER & FINAL RETAIL CALL TO ACTION */}
       {/* ========================================================================= */}
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:pb-24">
         <div className="rounded-[36px] bg-gradient-to-br from-[#0b3b63] via-[#041a2f] to-slate-950 p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden">
@@ -1243,7 +1254,7 @@ export default function HomePage() {
                 Get Hardware Updates &amp; Printing Tips
               </h2>
               <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-                Subscribe to the SmartEprint Services newsletter for product announcements, new arrivals,
+                Subscribe to the Smart ePrint Services newsletter for product announcements, new arrivals,
                 and practical maintenance advice delivered to your inbox.
               </p>
 

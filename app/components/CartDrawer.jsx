@@ -241,7 +241,7 @@ export default function CartDrawer() {
               <div className="mt-3 flex items-center justify-center gap-4 text-[11px] text-slate-400">
                 <span className="flex items-center gap-1">
                   <ShieldCheck size={13} className="text-brand-500" />
-                  1-Year Warranty
+                  Manufacturer Warranty
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">

@@ -86,7 +86,7 @@ const faqItems = [
   {
     question: "Are your products covered by manufacturer warranties?",
     answer:
-      "Yes, all brand-new printers and hardware sold on SmartEprint Services include the manufacturer's standard warranty and direct customer support.",
+      "Yes, all brand-new printers and hardware sold on Smart ePrint Services include the manufacturer's standard warranty and direct customer support.",
   },
 ];
 
@@ -248,7 +248,7 @@ export default function PremiumContactPage() {
               Frequently Asked Questions
             </h2>
             <p className="mt-2 text-sm text-gray-500">
-              Quick answers about shipping, returns, and ordering with SmartEprint Services.
+              Quick answers about shipping, returns, and ordering with Smart ePrint Services.
             </p>
           </div>
 

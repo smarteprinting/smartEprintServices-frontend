@@ -62,7 +62,15 @@ export default function ProductDetailPage() {
       .then(({ response, data }) => {
         if (!response.ok || !data.success)
           throw new Error(data.message || "Product not found");
-        setProduct(data.product);
+        const p = data.product;
+        const stock = Number(p.countInStock ?? p.stockCount ?? 15);
+        const inStock = p.inStock !== undefined ? Boolean(p.inStock) : stock > 0;
+        setProduct({
+          ...p,
+          stockCount: stock,
+          countInStock: stock,
+          inStock,
+        });
       })
       .catch((reason) => {
         const fb = fallbackCatalog.find(
@@ -157,9 +165,16 @@ export default function ProductDetailPage() {
         <div className="mt-8 grid min-w-0 gap-8 lg:mt-12 lg:gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,.96fr)]">
           <section className="min-w-0">
             <div className="relative flex h-[clamp(280px,70vw,500px)] items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
-              <span className="absolute left-3 top-3 z-10 rounded-md bg-brand-500 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white sm:left-4 sm:top-4 sm:px-3 sm:py-2">
-                {product.inStock ? "✓ In Stock" : "Out of Stock"}
-              </span>
+              <div className="absolute left-3 top-3 z-10 flex flex-col gap-1.5 sm:left-4 sm:top-4">
+                <span className={`rounded-md px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white sm:px-3 sm:py-2 ${
+                  product.inStock !== false ? "bg-brand-500" : "bg-slate-500"
+                }`}>
+                  {product.inStock !== false ? "✓ In Stock" : "✗ Out of Stock"}
+                </span>
+                <span className="rounded-md bg-emerald-600 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white sm:px-3 sm:py-2">
+                  New Condition
+                </span>
+              </div>
               {images.length ? (
                 <Image
                   src={images[selectedImage] || images[0]}
@@ -200,6 +215,14 @@ export default function ProductDetailPage() {
               <span className="rounded-md bg-blue-50 px-3 py-2 text-[10px] font-bold text-brand-600">
                 {product.brand}
               </span>
+              <span className="rounded-md bg-emerald-50 px-3 py-2 text-[10px] font-bold text-emerald-700">
+                Condition: New
+              </span>
+              {!product.inStock && (
+                <span className="rounded-md bg-rose-50 px-3 py-2 text-[10px] font-bold text-rose-700">
+                  Currently Unavailable
+                </span>
+              )}
             </div>
             <h1 className="mt-5 break-words text-2xl font-black leading-tight tracking-tight sm:text-4xl">
               {product.name}
@@ -260,7 +283,8 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={() => addToCart(product, quantity, true)}
-                className="flex items-center justify-center gap-2 rounded-md bg-black py-3.5 text-sm font-bold text-white hover:bg-slate-800"
+                disabled={product.inStock === false}
+                className="flex items-center justify-center gap-2 rounded-md bg-black py-3.5 text-sm font-bold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <ShoppingCart size={16} />
                 Add to Cart
@@ -268,11 +292,17 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={openCheckout}
-                className="flex items-center justify-center gap-2 rounded-md bg-brand-500 py-3.5 text-sm font-bold text-white hover:bg-brand-700"
+                disabled={product.inStock === false}
+                className="flex items-center justify-center gap-2 rounded-md bg-brand-500 py-3.5 text-sm font-bold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Buy Now
+                {product.inStock !== false ? "Buy Now" : "Unavailable"}
               </button>
             </div>
+            {product.inStock === false && (
+              <p className="mt-2 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-center text-xs font-semibold text-rose-700">
+                This item is currently out of stock and cannot be added to your cart.
+              </p>
+            )}
             <div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-slate-200 pt-7 text-xs">
               <div className="flex gap-3">
                 <Truck size={18} className="text-brand-500" />

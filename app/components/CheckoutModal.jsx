@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Truck,
   CreditCard,
-  Wrench,
   ArrowRight,
 } from "lucide-react";
 import { useCart } from "./CartContext";
@@ -21,7 +20,6 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
   const [step, setStep] = useState("form"); // 'form' | 'success'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderNumber, setOrderNumber] = useState("");
-  const [includeSetup, setIncludeSetup] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [submitError, setSubmitError] = useState("");
   const [shippingFee, setShippingFee] = useState(null);
@@ -48,6 +46,11 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
     setFormData((current) => ({ ...current, fullName: current.fullName || user.name || "", email: current.email || user.email || "" }));
   }, [user]);
 
+  const items = directItem ? [directItem] : cart;
+  const itemsSubtotal = directItem
+    ? directItem.price * directItem.quantity
+    : subtotal;
+
   useEffect(() => {
     const { address, city, state, zipCode, fullName } = formData;
     if (!address.trim() || !city.trim() || !state.trim() || !zipCode.trim()) {
@@ -55,6 +58,18 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
       setShippingError("");
       return;
     }
+
+    const stateUpper = state.trim().toUpperCase();
+    const isContinentalUS = !["AK", "HI", "ALASKA", "HAWAII", "PR", "GU", "VI", "AS", "MP"].includes(stateUpper);
+
+    // Free standard delivery for qualifying Continental US orders $49+
+    if (itemsSubtotal >= 49 && isContinentalUS) {
+      setShippingFee(0);
+      setShippingError("");
+      setShippingLoading(false);
+      return;
+    }
+
     const controller = new AbortController();
     setShippingLoading(true);
     setShippingError("");
@@ -66,10 +81,16 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
         if (!amounts.length) throw new Error("No shipping rates are available for this address.");
         setShippingFee(Math.min(...amounts));
       })
-      .catch((error) => { if (error.name !== "AbortError") { setShippingFee(null); setShippingError(error.message); } })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          // Fallback standard carrier rate if API service is unreachable
+          setShippingFee(9.95);
+          setShippingError("");
+        }
+      })
       .finally(() => setShippingLoading(false));
     return () => controller.abort();
-  }, [formData.address, formData.city, formData.state, formData.zipCode, formData.fullName]);
+  }, [formData.address, formData.city, formData.state, formData.zipCode, formData.fullName, itemsSubtotal]);
 
   useEffect(() => {
     if (!isOpen || paymentMethod !== "card") return undefined;
@@ -113,13 +134,8 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
 
   if (!isOpen) return null;
 
-  // If directly buying a single item
-  const items = directItem ? [directItem] : cart;
-  const itemsSubtotal = directItem
-    ? directItem.price * directItem.quantity
-    : subtotal;
-  const setupFee = includeSetup ? 49.0 : 0;
-  const finalTotal = itemsSubtotal + (shippingFee || 0) + setupFee;
+  // Final total calculation
+  const finalTotal = itemsSubtotal + (shippingFee || 0);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -145,7 +161,7 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
           ...formData,
           items,
           paymentMethod,
-          includeSetup,
+          includeSetup: false,
           shippingFee,
           cloverToken,
         }),
@@ -200,7 +216,9 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
                   Secure Checkout
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Official SmartEprint Hardware & Services Order
+                  <span className="font-semibold text-slate-700">Smart ePrint Services</span>
+                  {" "}&bull;{" "}
+                  <span>Operated by Innovation Dynamics Group LLC</span>
                 </p>
               </div>
             </div>
@@ -240,38 +258,6 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Optional On-site Setup Add-on */}
-              <div
-                onClick={() => setIncludeSetup(!includeSetup)}
-                className={`flex cursor-pointer items-center justify-between rounded-2xl border p-4 transition ${
-                  includeSetup
-                    ? "border-brand-500 bg-brand-50/50"
-                    : "border-slate-200 bg-white hover:border-slate-300"
-                }`}
-              >
-                <div className="flex items-start gap-3">
-                  <div className={`mt-0.5 flex h-5 w-5 items-center justify-center rounded border ${
-                    includeSetup ? "border-brand-500 bg-brand-500 text-white" : "border-slate-300 bg-white"
-                  }`}>
-                    {includeSetup && <CheckCircle size={14} />}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Wrench size={16} className="text-brand-500" />
-                      <span className="text-sm font-bold text-slate-900">
-                        Add Professional On-Site Setup & Installation
-                      </span>
-                    </div>
-                    <p className="mt-0.5 text-xs text-slate-500">
-                      Optional local setup service. A technician can unpack the printer, configure Wi-Fi, and connect your devices where service is available.
-                    </p>
-                  </div>
-                </div>
-                <span className="text-sm font-bold text-brand-700 ml-4 whitespace-nowrap">
-                  +$49.00
-                </span>
-              </div>
-
               {/* Customer Info */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
@@ -435,18 +421,29 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Standard Shipping</span>
-                  <span>{shippingLoading ? "Calculating..." : shippingFee === null ? "Enter address" : `$${shippingFee.toFixed(2)}`}</span>
+                  <span>
+                    {shippingLoading ? (
+                      "Calculating..."
+                    ) : shippingFee === null ? (
+                      "Enter address"
+                    ) : shippingFee === 0 ? (
+                      <span className="font-bold text-emerald-600">FREE (Orders $49+)</span>
+                    ) : (
+                      `$${shippingFee.toFixed(2)}`
+                    )}
+                  </span>
                 </div>
-                {includeSetup && (
-                  <div className="flex justify-between text-brand-700">
-                    <span>On-Site Professional Setup</span>
-                    <span>+$49.00</span>
-                  </div>
-                )}
+                <div className="flex justify-between text-slate-500 text-xs">
+                  <span>Sales Tax</span>
+                  <span className="italic">Calculated at payment</span>
+                </div>
                 <div className="flex justify-between text-base font-bold text-slate-900 pt-2 border-t border-slate-200">
-                  <span>Estimated Total</span>
+                  <span>Order Total</span>
                   <span className="text-brand-600">${finalTotal.toFixed(2)}</span>
                 </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  * Applicable sales tax will be calculated and shown at final payment processing. The total above excludes tax.
+                </p>
               </div>
 
               {shippingError && <p className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm font-semibold text-amber-700">{shippingError}</p>}
@@ -479,7 +476,7 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
               Order Received
             </h3>
             <p className="mt-1 text-sm text-slate-600">
-              Thank you, <span className="font-semibold text-slate-800">{formData.fullName}</span>. Your order has been sent to SmartEprint for processing.
+              Thank you, <span className="font-semibold text-slate-800">{formData.fullName}</span>. Your order has been sent to Smart ePrint Services for processing.
             </p>
 
             <div className="my-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-left text-sm space-y-3">
@@ -496,9 +493,9 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
                 </span>
               </div>
               <div className="flex justify-between border-b border-slate-200 pb-2.5">
-                <span className="text-slate-500">Service Add-on</span>
+                <span className="text-slate-500">Shipping</span>
                 <span className="font-medium text-slate-800">
-                  {includeSetup ? "On-Site Setup Included" : "Standard Delivery Only"}
+                  Standard Delivery
                 </span>
               </div>
               <div className="flex justify-between border-b border-slate-200 pb-2.5">
@@ -513,9 +510,21 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 mb-6 leading-relaxed">
-              We have dispatched an email confirmation to <span className="font-medium text-slate-700">{formData.email}</span>. A SmartEprint representative will contact you via phone at <span className="font-medium text-slate-700">{formData.phone}</span> to coordinate your delivery and optional on-site setup schedule.
+            <p className="text-xs text-slate-500 mb-5 leading-relaxed">
+              A confirmation email has been sent to <span className="font-medium text-slate-700">{formData.email}</span>. A Smart ePrint Services representative will reach out if additional details are required for your shipment.
             </p>
+
+            <div className="mb-5 rounded-2xl border border-blue-100 bg-blue-50/60 px-5 py-4 text-xs text-slate-600 text-left">
+              <p className="font-bold text-slate-800 mb-2">Need help with your order?</p>
+              <a href="tel:+18777652289" className="flex items-center gap-2 font-semibold text-brand-600 hover:underline mb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.4a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +1 (877) 765-2289
+              </a>
+              <a href="mailto:support@smarteprintservices.com" className="flex items-center gap-2 font-semibold text-brand-600 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                support@smarteprintservices.com
+              </a>
+            </div>
 
             <button
               onClick={handleClose}
