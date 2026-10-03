@@ -70,6 +70,12 @@ export default function AdminLayout({ children }) {
 
   const navLinks = [
     { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+    { href: "/admin/categories", label: "Categories", icon: FolderKanban },
+    { href: "/admin/products", label: "Products", icon: Package },
+    { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
+    { href: "/admin/customers", label: "Customers", icon: Users },
+    { href: "/admin/settings", label: "Settings", icon: Settings },
   ];
 
   return (
@@ -120,11 +126,11 @@ export default function AdminLayout({ children }) {
           />
           <aside className="fixed inset-y-0 left-0 z-50 w-72 bg-white p-5 text-slate-900 shadow-2xl">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-slate-800">
-                <span className="font-bold text-lg">Admin Portal</span>
+              <div className="flex items-center justify-between pb-6 border-b border-slate-200">
+                <span className="font-bold text-lg text-slate-900">Admin Portal</span>
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:text-white"
+                  className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
                 >
                   <X size={20} />
                 </button>
