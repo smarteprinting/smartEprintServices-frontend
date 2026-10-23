@@ -8,8 +8,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Smart ePrint Services",
-  url: "https://smarteprintservices.com",
-  logo: "https://smarteprintservices.com/hero-printer-clean.avif",
+  url: "https://Mapleitservices.com",
+  logo: "https://Mapleitservices.com/hero-printer-clean.avif",
   description:
     "Smart ePrint Services is an online retailer owned and operated by Innovation Dynamics Group LLC, providing genuine printers, scanners, office printing technology, ink, toner, and accessories across the United States.",
   contactPoint: [
@@ -21,7 +21,7 @@ const organizationSchema = {
       availableLanguage: ["en"],
     },
   ],
-  sameAs: ["https://smarteprintservices.com"],
+  sameAs: ["https://Mapleitservices.com"],
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",

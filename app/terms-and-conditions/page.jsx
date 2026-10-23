@@ -27,7 +27,7 @@ const sections = [
     id: "store-ownership",
     title: "1. Store Ownership & Acceptance of Terms",
     content: [
-      "Welcome to Smart ePrint Services. These Terms & Conditions (\"Terms\") govern your access to and use of smarteprintservices.com (the \"Website\") and any purchase of products or services through our online store.",
+      "Welcome to Smart ePrint Services. These Terms & Conditions (\"Terms\") govern your access to and use of Mapleitservices.com (the \"Website\") and any purchase of products or services through our online store.",
       "Smart ePrint Services is an e-commerce online retail store owned and operated by Innovation Dynamics Group LLC (\"Innovation Dynamics Group LLC\", \"Company\", \"we\", \"us\", or \"our\"), a registered business entity based in the State of Minnesota, United States.",
       "By browsing our catalog, creating an account, submitting an inquiry, placing an order, or purchasing any merchandise from Smart ePrint Services, you acknowledge that you have read, understood, and agree to be legally bound by these Terms, along with our Privacy Policy and Returns & Refunds Policy.",
       "If you do not agree with any provision of these Terms, you must immediately discontinue using our Website and refrain from placing orders.",
@@ -37,7 +37,7 @@ const sections = [
     id: "orders-acceptance",
     title: "2. Orders & Order Acceptance",
     content: [
-      "Order Submission: When you place an order on smarteprintservices.com, your submission represents an offer to purchase the selected merchandise subject to these Terms.",
+      "Order Submission: When you place an order on Mapleitservices.com, your submission represents an offer to purchase the selected merchandise subject to these Terms.",
       "Order Confirmation vs. Acceptance: Receipt of an electronic order confirmation, receipt notice, or order number does not signify our final acceptance of your order, nor does it constitute confirmation of our offer to sell. An order is officially accepted and a binding contract formed only when your payment has cleared verification, your shipping address has been authenticated, and the merchandise is fulfilled and dispatched to the carrier.",
       "Right to Decline or Cancel: Smart ePrint Services reserves the right, at its sole discretion and at any time after receiving your order, to accept, decline, limit, or cancel your order for any legitimate business reason. Common reasons include product unavailability or inventory shortages, errors in product descriptions or pricing, suspected fraudulent or unauthorized transactions, or address verification failures.",
       "Order Quantity Limits: We reserve the right to limit the quantity of items purchased per person, per household, or per order. Such restrictions may apply to orders placed using the same customer account, credit card, billing address, or shipping address.",
@@ -47,7 +47,7 @@ const sections = [
     id: "prices-pricing-errors",
     title: "3. Prices & Pricing Errors",
     content: [
-      "Currency: All prices listed on smarteprintservices.com are displayed in United States Dollars ($ USD) unless otherwise explicitly stated.",
+      "Currency: All prices listed on Mapleitservices.com are displayed in United States Dollars ($ USD) unless otherwise explicitly stated.",
       "Price Adjustments: We reserve the right to adjust prices, promotional offers, and product specifications at any time without prior notice prior to order confirmation. The price charged will be the price reflected on the checkout screen at the time the order is submitted.",
       "Pricing Errors: While we make every reasonable effort to provide accurate pricing across our entire catalog, typographical errors, feed synchronization delays, or vendor discrepancies may occasionally occur. If a product is listed at an incorrect price due to a clerical, typographical, or technical error:",
       "• Smart ePrint Services reserves the right to cancel, refuse, or decline any orders placed for products listed at the incorrect price, regardless of whether the order has been acknowledged or your payment method has been charged.",
@@ -72,7 +72,7 @@ const sections = [
       "Sales Tax Collection: Smart ePrint Services calculates, collects, and remits applicable state and local sales taxes in accordance with federal, state, and municipal statutory requirements based on the shipping destination provided at checkout.",
       "Tax Estimation at Checkout: An estimated sales tax amount is calculated and displayed on the checkout page prior to final order submission.",
       "Customer Tax Responsibility: If a transaction is not subject to sales tax collection by Smart ePrint Services in your jurisdiction, you may remain personally responsible for any applicable state or local use taxes. Customers are encouraged to consult their tax advisor regarding local tax obligations.",
-      "Tax-Exempt Orders: Organizations eligible for sales tax exemption must contact our support team at support@smarteprintservices.com with a valid, signed state tax-exemption certificate prior to placing their order so their account can be configured appropriately.",
+      "Tax-Exempt Orders: Organizations eligible for sales tax exemption must contact our support team at support@Mapleitservices.com with a valid, signed state tax-exemption certificate prior to placing their order so their account can be configured appropriately.",
     ],
   },
   {
@@ -92,7 +92,7 @@ const sections = [
     id: "order-cancellation",
     title: "7. Order Cancellation",
     content: [
-      "Customer Cancellation Before Dispatch: You may request to cancel an order at no penalty before the order has entered our packaging and fulfillment workflow or been handed to the shipping carrier. To request cancellation, contact our customer service team immediately by phone at +1 (877) 765-2289 or by email at support@smarteprintservices.com with your order number.",
+      "Customer Cancellation Before Dispatch: You may request to cancel an order at no penalty before the order has entered our packaging and fulfillment workflow or been handed to the shipping carrier. To request cancellation, contact our customer service team immediately by phone at +1 (877) 765-2289 or by email at support@Mapleitservices.com with your order number.",
       "Orders Already Shipped: Once an order has been packaged, labeled, or handed over to a freight or parcel carrier, it cannot be intercepted or cancelled in transit. You must accept the delivery and initiate a standard return under our 30-day Returns & Refunds Policy.",
       "Unauthorized Package Refusal: Refusing a package upon delivery without prior authorization from Smart ePrint Services may incur carrier return fees, return shipping deductions, or delays in refund processing.",
       "Merchant Cancellation: As outlined in Section 2, Smart ePrint Services reserves the right to cancel orders due to inventory exhaustion, payment failure, suspicion of fraud, or pricing errors. In such cases, you will be notified immediately and issued a prompt 100% refund.",
@@ -109,7 +109,7 @@ const sections = [
       "Estimated Delivery Timeframe: Standard delivery transit typically takes 2 to 3 business days following dispatch within the continental United States. Transit times are estimates and may vary due to carrier volume, seasonal peaks, inclement weather, or remote geographic locations.",
       "Tracking: A shipping confirmation email containing the carrier name and tracking number is dispatched as soon as your package leaves our facility.",
       "Title & Risk of Loss: All merchandise purchased from Smart ePrint Services is shipped pursuant to a commercial shipping contract. Risk of loss and title for products pass to you upon delivery to the carrier or upon physical delivery to the designated delivery address, in accordance with applicable consumer protection laws.",
-      "Damaged in Transit / Inspection Requirement: Customers must inspect all packages upon arrival. If your shipment arrives visibly damaged, crushed, tampered with, or short of items, you must notify Smart ePrint Services within 48 hours of delivery at support@smarteprintservices.com with photos of the damaged box, shipping label, and contents so we can file a carrier claim and arrange a prompt replacement or refund.",
+      "Damaged in Transit / Inspection Requirement: Customers must inspect all packages upon arrival. If your shipment arrives visibly damaged, crushed, tampered with, or short of items, you must notify Smart ePrint Services within 48 hours of delivery at support@Mapleitservices.com with photos of the damaged box, shipping label, and contents so we can file a carrier claim and arrange a prompt replacement or refund.",
     ],
   },
   {
@@ -118,7 +118,7 @@ const sections = [
     content: [
       "30-Day Return Window: We provide a 30-day return policy. You have 30 calendar days from the date of confirmed carrier delivery to initiate a return request for eligible merchandise.",
       "Return Eligibility Criteria: To qualify for a return and refund, the item must be brand-new, unused, uninstalled, and in its original manufacturer packaging with all factory seals, serial numbers, power cords, cables, software media, accessories, and instruction manuals intact.",
-      "Return Merchandise Authorization (RMA) Required: You must contact our customer service team at support@smarteprintservices.com or call +1 (877) 765-2289 to obtain an RMA number and return warehouse address prior to shipping any product back. Items returned without an approved RMA number will be rejected or significantly delayed.",
+      "Return Merchandise Authorization (RMA) Required: You must contact our customer service team at support@Mapleitservices.com or call +1 (877) 765-2289 to obtain an RMA number and return warehouse address prior to shipping any product back. Items returned without an approved RMA number will be rejected or significantly delayed.",
       "Return Shipping Costs:",
       "• Customer Responsibility: For discretionary returns (e.g., changed mind, purchased wrong model, no longer needed), the customer is responsible for safe return shipping and shipping costs. We recommend using a trackable, insured carrier.",
       "• Store Responsibility: If the return is due to our error (wrong item sent) or the product arrived damaged or defective out of the box, Smart ePrint Services will provide a prepaid return shipping label at no expense to you.",
@@ -146,7 +146,7 @@ const sections = [
     id: "website-use-ip",
     title: "11. Website Use & Intellectual Property",
     content: [
-      "License to Access: Smart ePrint Services grants you a limited, non-exclusive, non-transferable, revocable license to access and make personal or commercial purchasing use of smarteprintservices.com in accordance with these Terms.",
+      "License to Access: Smart ePrint Services grants you a limited, non-exclusive, non-transferable, revocable license to access and make personal or commercial purchasing use of Mapleitservices.com in accordance with these Terms.",
       "Intellectual Property Ownership: All content included on the Website—including text, graphics, logos, button icons, images, audio clips, digital downloads, compilations, and software—is the property of Innovation Dynamics Group LLC, Smart ePrint Services, or its content suppliers and is protected by United States and international copyright, trademark, and unfair competition laws.",
       "Trademark Notice: Smart ePrint Services and associated logos are service marks of Innovation Dynamics Group LLC. HP®, Canon®, Epson®, Brother®, and other brand names, product designations, and logos referenced on the Website are registered trademarks of their respective owners. Innovation Dynamics Group LLC is an authorized reseller of select brand products (including HP); all other third-party trademarks are used strictly for descriptive, identification, and compatibility purposes.",
     ],
@@ -155,7 +155,7 @@ const sections = [
     id: "prohibited-activities",
     title: "12. Prohibited Activities & Security",
     content: [
-      "Prohibited Conduct: You agree not to engage in any of the following restricted activities when using smarteprintservices.com:",
+      "Prohibited Conduct: You agree not to engage in any of the following restricted activities when using Mapleitservices.com:",
       "• Violating any applicable federal, state, local, or international laws or regulations.",
       "• Attempting unauthorized access to our servers, networks, user databases, or payment gateways.",
       "• Using scrapers, crawlers, robots, or automated data extraction tools to harvest catalog information, prices, or customer data without our written consent.",
@@ -188,7 +188,7 @@ const sections = [
     id: "governing-law",
     title: "15. Governing Law & Dispute Resolution",
     content: [
-      "Governing Law: These Terms and any transaction or dispute arising out of or related to your use of smarteprintservices.com shall be governed by, construed, and enforced in accordance with the laws of the State of Minnesota, United States, without regard to its conflict of law principles.",
+      "Governing Law: These Terms and any transaction or dispute arising out of or related to your use of Mapleitservices.com shall be governed by, construed, and enforced in accordance with the laws of the State of Minnesota, United States, without regard to its conflict of law principles.",
       "Jurisdiction: You agree that any legal action, suit, or proceeding arising out of or relating to these Terms or your purchase shall be instituted exclusively in the state or federal courts located in Anoka County or Hennepin County, Minnesota, and you irrevocably submit to the exclusive personal jurisdiction of such courts.",
       "Informal Resolution: Before initiating any formal legal claim, you agree to contact our customer support team in writing with a comprehensive description of the dispute. Both parties agree to make a good-faith effort to resolve the dispute amicably before pursuing litigation.",
     ],
@@ -275,11 +275,11 @@ export default function TermsAndConditions() {
                   +1 (877) 765-2289
                 </a>
                 <a
-                  href="mailto:support@smarteprintservices.com"
+                  href="mailto:support@Mapleitservices.com"
                   className="flex items-center gap-2 text-[#0758cf] hover:underline"
                 >
                   <Mail className="h-3.5 w-3.5" />
-                  support@smarteprintservices.com
+                  support@Mapleitservices.com
                 </a>
               </div>
             </div>
@@ -307,7 +307,7 @@ export default function TermsAndConditions() {
                   Store Identification Notice:
                 </p>
                 <p className="mt-1">
-                  <strong>Smart ePrint Services</strong> (<a href="https://smarteprintservices.com" className="text-[#0758cf] underline">smarteprintservices.com</a>) is an online store owned and operated by <strong>Innovation Dynamics Group LLC</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), a Minnesota limited liability company.
+                  <strong>Smart ePrint Services</strong> (<a href="https://Mapleitservices.com" className="text-[#0758cf] underline">Mapleitservices.com</a>) is an online store owned and operated by <strong>Innovation Dynamics Group LLC</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), a Minnesota limited liability company.
                 </p>
                 <p className="mt-2 text-xs text-slate-600">
                   These Terms set forth the legally binding terms and conditions governing your use of our online store and all purchases made through it.
@@ -385,8 +385,8 @@ export default function TermsAndConditions() {
                           <p className="font-bold text-blue-950">Need to Initiate a Return?</p>
                           <p className="mt-0.5 text-xs text-blue-800 leading-relaxed">
                             Please contact customer service at{" "}
-                            <a href="mailto:support@smarteprintservices.com" className="font-bold underline">
-                              support@smarteprintservices.com
+                            <a href="mailto:support@Mapleitservices.com" className="font-bold underline">
+                              support@Mapleitservices.com
                             </a>{" "}
                             to request a mandatory Return Merchandise Authorization (RMA) number. For step-by-step guidance, visit our full{" "}
                             <Link href="/refund-cancellation-policy" className="font-bold text-[#0758cf] underline">
@@ -468,10 +468,10 @@ export default function TermsAndConditions() {
                               Support Email
                             </p>
                             <a
-                              href="mailto:support@smarteprintservices.com"
+                              href="mailto:support@Mapleitservices.com"
                               className="mt-0.5 block font-bold text-[#0758cf] hover:underline"
                             >
-                              support@smarteprintservices.com
+                              support@Mapleitservices.com
                             </a>
                             <p className="text-xs text-slate-500">
                               24/7 ticket response within 24 business hours

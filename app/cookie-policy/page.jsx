@@ -101,7 +101,7 @@ const cookieCategories = [
       {
         name: "IDE, DSID, __Secure-3PAPISID",
         provider: "Google Ads (Google LLC)",
-        purpose: "Used by Google to measure ad performance, limit ad frequency, show personalized ads, and track conversions on smarteprintservices.com back to Google Ads campaigns.",
+        purpose: "Used by Google to measure ad performance, limit ad frequency, show personalized ads, and track conversions on Mapleitservices.com back to Google Ads campaigns.",
         duration: "Up to 2 years",
         type: "HTTP Cookie",
         link: "https://policies.google.com/privacy",
@@ -263,7 +263,7 @@ export default function CookiePolicy() {
               <div className="mt-6 rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50/80 to-indigo-50/50 p-5 text-sm leading-relaxed text-slate-700">
                 <p className="font-bold text-slate-900">Store Identification Notice:</p>
                 <p className="mt-1">
-                  <strong>Smart ePrint Services</strong> (<a href="https://smarteprintservices.com" className="text-[#0758cf] underline">smarteprintservices.com</a>), owned and operated by <strong>Innovation Dynamics Group LLC</strong>, uses cookies and similar tracking technologies on its website. This policy explains <em>exactly</em> which cookies and third-party tools are in use, why we use them, and how you can control or opt out of non-essential tracking.
+                  <strong>Smart ePrint Services</strong> (<a href="https://Mapleitservices.com" className="text-[#0758cf] underline">Mapleitservices.com</a>), owned and operated by <strong>Innovation Dynamics Group LLC</strong>, uses cookies and similar tracking technologies on its website. This policy explains <em>exactly</em> which cookies and third-party tools are in use, why we use them, and how you can control or opt out of non-essential tracking.
                 </p>
               </div>
             </div>
@@ -564,7 +564,7 @@ export default function CookiePolicy() {
                       <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0758cf]" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
-                        <a href="mailto:support@smarteprintservices.com" className="mt-0.5 block font-bold text-[#0758cf] hover:underline break-all">support@smarteprintservices.com</a>
+                        <a href="mailto:support@Mapleitservices.com" className="mt-0.5 block font-bold text-[#0758cf] hover:underline break-all">support@Mapleitservices.com</a>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">

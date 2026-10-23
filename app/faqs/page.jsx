@@ -21,7 +21,7 @@ const faqCategories = [
       },
       {
         question: "How can I check printer, ink, or toner compatibility?",
-        answer: "Each product page includes compatibility information and specifications. You can also contact our customer service team by email at support@smarteprintservices.com or by phone at +1 (877) 765-2289 and we will help you find the right supplies for your printer model.",
+        answer: "Each product page includes compatibility information and specifications. You can also contact our customer service team by email at support@Mapleitservices.com or by phone at +1 (877) 765-2289 and we will help you find the right supplies for your printer model.",
       },
       {
         question: "Do products include a manufacturer warranty?",
@@ -47,7 +47,7 @@ const faqCategories = [
       },
       {
         question: "Can I cancel an order?",
-        answer: "You may request an order cancellation before the order has been shipped. Please contact us as soon as possible at support@smarteprintservices.com or call +1 (877) 765-2289. Once an order has shipped, it cannot be cancelled and must follow our standard return process.",
+        answer: "You may request an order cancellation before the order has been shipped. Please contact us as soon as possible at support@Mapleitservices.com or call +1 (877) 765-2289. Once an order has shipped, it cannot be cancelled and must follow our standard return process.",
       },
     ],
   },
@@ -61,7 +61,7 @@ const faqCategories = [
       },
       {
         question: "How do I return a product?",
-        answer: "To initiate a return, contact our customer service team at support@smarteprintservices.com with your order number and reason for return. If approved, we will provide a Return Merchandise Authorization (RMA) number and return instructions. Do not send items back without an RMA number.",
+        answer: "To initiate a return, contact our customer service team at support@Mapleitservices.com with your order number and reason for return. If approved, we will provide a Return Merchandise Authorization (RMA) number and return instructions. Do not send items back without an RMA number.",
       },
       {
         question: "Who pays for return shipping?",
@@ -73,7 +73,7 @@ const faqCategories = [
       },
       {
         question: "What should I do if an item arrives damaged?",
-        answer: "Please contact us within 48 hours of delivery with photos of the damaged packaging and product at support@smarteprintservices.com. We will arrange a free return and offer either a replacement or a full refund.",
+        answer: "Please contact us within 48 hours of delivery with photos of the damaged packaging and product at support@Mapleitservices.com. We will arrange a free return and offer either a replacement or a full refund.",
       },
     ],
   },
@@ -83,7 +83,7 @@ const faqCategories = [
     faqs: [
       {
         question: "How can I contact customer service?",
-        answer: "You can reach our customer service team by email at support@smarteprintservices.com or by phone at +1 (877) 765-2289. Our team is available Monday to Friday 9:00 AM to 6:00 PM EST, and Saturday 10:00 AM to 4:00 PM EST.",
+        answer: "You can reach our customer service team by email at support@Mapleitservices.com or by phone at +1 (877) 765-2289. Our team is available Monday to Friday 9:00 AM to 6:00 PM EST, and Saturday 10:00 AM to 4:00 PM EST.",
       },
       {
         question: "What can your team help with?",
@@ -130,7 +130,7 @@ export default function FAQsPage() {
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
-            <a href="mailto:support@smarteprintservices.com" className="inline-flex items-center gap-2 rounded-full bg-[#061d39] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#0d2d55]">
+            <a href="mailto:support@Mapleitservices.com" className="inline-flex items-center gap-2 rounded-full bg-[#061d39] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#0d2d55]">
               <Mail className="h-4 w-4" />
               Email Us
             </a>

@@ -40,7 +40,7 @@ export default function robots() {
         disallow: ['/admin/', '/api/', '/_next/', '/private/', '/profile/'],
       },
     ],
-    sitemap: 'https://smarteprintservices.com/sitemap.xml',
-    host: 'https://smarteprintservices.com',
+    sitemap: 'https://Mapleitservices.com/sitemap.xml',
+    host: 'https://Mapleitservices.com',
   };
 }

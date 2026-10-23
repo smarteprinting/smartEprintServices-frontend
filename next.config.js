@@ -33,8 +33,8 @@ const nextConfig = {
       // ── www → non-www canonical redirect ──────────────────────────────────
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www.smarteprintservices.com" }],
-        destination: "https://smarteprintservices.com/:path*",
+        has: [{ type: "host", value: "www.Mapleitservices.com" }],
+        destination: "https://Mapleitservices.com/:path*",
         permanent: true,
       },
 

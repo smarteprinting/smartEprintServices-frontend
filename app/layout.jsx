@@ -6,7 +6,7 @@ import SiteLayout from './components/SiteLayout';
 const inter = Inter({ subsets: ['latin'], preload: false });
 
 export const metadata = {
-  metadataBase: new URL('https://smarteprintservices.com'),
+  metadataBase: new URL('https://Mapleitservices.com'),
   title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
   description:
     'Smart ePrint Services is an online retailer offering printers, scanners, ink, toner, accessories, and office printing supplies across the USA. Owned and operated by Innovation Dynamics Group LLC.',
@@ -26,19 +26,19 @@ export const metadata = {
   creator: 'Innovation Dynamics Group LLC',
   publisher: 'Innovation Dynamics Group LLC',
   alternates: {
-    canonical: 'https://smarteprintservices.com',
+    canonical: 'https://Mapleitservices.com',
   },
   openGraph: {
     title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
     description:
       'Shop genuine printers, document scanners, original ink & toner cartridges, and printing accessories across the United States. Owned and operated by Innovation Dynamics Group LLC.',
-    url: 'https://smarteprintservices.com',
+    url: 'https://Mapleitservices.com',
     siteName: 'Smart ePrint Services',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: 'https://smarteprintservices.com/hero-printer-clean.avif',
+        url: 'https://Mapleitservices.com/hero-printer-clean.avif',
         width: 1200,
         height: 630,
         alt: 'Smart ePrint Services printers and office technology',
@@ -50,7 +50,7 @@ export const metadata = {
     title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
     description:
       'Explore reliable printers, scanners, ink, toner, and accessories for home offices and businesses. Fast US shipping.',
-    images: ['https://smarteprintservices.com/hero-printer-clean.avif'],
+    images: ['https://Mapleitservices.com/hero-printer-clean.avif'],
   },
   icons: {
     icon: '/svg-icon.png',
@@ -77,6 +77,16 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          id="bing-uet"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html:
+              '(function(w,d,t,u,o){w[u]=w[u]||[],o.ts=(new Date).getTime();var n=d.createElement(t); n.src="https://bat.bing.net/bat.js?ti="+o.ti+("uetq"!=u?"&q="+u:""),n.async=1, n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&"loaded"!==s&&"complete"!==s||( o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad"),n.onload=n.onreadystatechange=null)}; var i=d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n,i); })(window,document,"script","uetq",{ti:"187265607", enableAutoSpaTracking: true});',
+          }}
+        />
+      </head>
       <body className={inter.className}>
         {process.env.NODE_ENV === 'production' && (
           <Script
@@ -105,8 +115,8 @@ export default function RootLayout({ children }) {
               "name": "Smart ePrint Services",
               "alternateName": "SmartEprint Services",
               "legalName": "Innovation Dynamics Group LLC",
-              "url": "https://smarteprintservices.com",
-              "logo": "https://smarteprintservices.com/logo.png",
+              "url": "https://Mapleitservices.com",
+              "logo": "https://Mapleitservices.com/logo.png",
               "description": "Smart ePrint Services is an independent online retailer selling printers, scanners, ink, toner, and printing accessories across the United States. Owned and operated by Innovation Dynamics Group LLC, an HP Authorized Reseller.",
               "address": {
                 "@type": "PostalAddress",
@@ -125,9 +135,9 @@ export default function RootLayout({ children }) {
                   "availableLanguage": "English"
                 }
               ],
-              "email": "support@smarteprintservices.com",
+              "email": "support@Mapleitservices.com",
               "sameAs": [
-                "https://www.smarteprintservices.com"
+                "https://www.Mapleitservices.com"
               ]
             })
           }}
@@ -136,4 +146,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
