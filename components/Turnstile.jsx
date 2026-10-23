@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const SCRIPT_ID = "cloudflare-Mapleitservices-ok-turnstile-script";
+const SCRIPT_ID = "cloudflare-smarteprintservices-ok-turnstile-script";
 
 /**
  * Turnstile security widget shared by the public forms.

@@ -87,9 +87,9 @@ export default function Disclaimer() {
                   <Phone className="h-3.5 w-3.5" />
                   +1 (877) 765-2289
                 </a>
-                <a href="mailto:support@Mapleitservices.com" className="flex items-center gap-2 text-[#0758cf] hover:underline">
+                <a href="mailto:support@smarteprintservices.com" className="flex items-center gap-2 text-[#0758cf] hover:underline">
                   <Mail className="h-3.5 w-3.5" />
-                  support@Mapleitservices.com
+                  support@smarteprintservices.com
                 </a>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function Disclaimer() {
               </h2>
               <p className="mt-2 text-sm font-semibold text-slate-500">Effective &amp; Last updated: October 2026</p>
               <p className="mt-5 text-[15px] leading-7 text-slate-600">
-                The information provided on <strong>Mapleitservices.com</strong> (the &ldquo;Website&rdquo;) is intended for general informational and commercial purposes. By accessing and using this Website, you acknowledge that you have read and understood the notices below. If you have any questions, please <Link href="/contact-us" className="font-bold text-[#0758cf] hover:underline">contact us</Link>.
+                The information provided on <strong>smarteprintservices.com</strong> (the &ldquo;Website&rdquo;) is intended for general informational and commercial purposes. By accessing and using this Website, you acknowledge that you have read and understood the notices below. If you have any questions, please <Link href="/contact-us" className="font-bold text-[#0758cf] hover:underline">contact us</Link>.
               </p>
             </div>
 
@@ -446,8 +446,8 @@ export default function Disclaimer() {
                       <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0758cf]" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
-                        <a href="mailto:support@Mapleitservices.com" className="mt-0.5 block font-bold text-[#0758cf] hover:underline break-all">
-                          support@Mapleitservices.com
+                        <a href="mailto:support@smarteprintservices.com" className="mt-0.5 block font-bold text-[#0758cf] hover:underline break-all">
+                          support@smarteprintservices.com
                         </a>
                         <p className="text-xs text-slate-500">Response within 24 hours</p>
                       </div>

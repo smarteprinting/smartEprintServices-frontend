@@ -161,7 +161,7 @@ export default function AdminSignupPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="alex@Mapleitservices.com"
+                  placeholder="alex@smarteprintservices.com"
                   className="w-full rounded-2xl border border-white/20 bg-slate-900/60 py-3 pl-10 pr-4 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20"
                 />
               </div>

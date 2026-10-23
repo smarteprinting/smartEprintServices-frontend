@@ -6,7 +6,7 @@ import SiteLayout from './components/SiteLayout';
 const inter = Inter({ subsets: ['latin'], preload: false });
 
 export const metadata = {
-  metadataBase: new URL('https://Mapleitservices.com'),
+  metadataBase: new URL('https://smarteprintservices.com'),
   title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
   description:
     'Smart ePrint Services is an online retailer offering printers, scanners, ink, toner, accessories, and office printing supplies across the USA. Owned and operated by Innovation Dynamics Group LLC.',
@@ -26,19 +26,19 @@ export const metadata = {
   creator: 'Innovation Dynamics Group LLC',
   publisher: 'Innovation Dynamics Group LLC',
   alternates: {
-    canonical: 'https://Mapleitservices.com',
+    canonical: 'https://smarteprintservices.com',
   },
   openGraph: {
     title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
     description:
       'Shop genuine printers, document scanners, original ink & toner cartridges, and printing accessories across the United States. Owned and operated by Innovation Dynamics Group LLC.',
-    url: 'https://Mapleitservices.com',
+    url: 'https://smarteprintservices.com',
     siteName: 'Smart ePrint Services',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: 'https://Mapleitservices.com/hero-printer-clean.avif',
+        url: 'https://smarteprintservices.com/hero-printer-clean.avif',
         width: 1200,
         height: 630,
         alt: 'Smart ePrint Services printers and office technology',
@@ -50,7 +50,7 @@ export const metadata = {
     title: 'Smart ePrint Services | Online Retailer for Printers, Scanners, Ink & Toner',
     description:
       'Explore reliable printers, scanners, ink, toner, and accessories for home offices and businesses. Fast US shipping.',
-    images: ['https://Mapleitservices.com/hero-printer-clean.avif'],
+    images: ['https://smarteprintservices.com/hero-printer-clean.avif'],
   },
   icons: {
     icon: '/svg-icon.png',
@@ -115,8 +115,8 @@ export default function RootLayout({ children }) {
               "name": "Smart ePrint Services",
               "alternateName": "SmartEprint Services",
               "legalName": "Innovation Dynamics Group LLC",
-              "url": "https://Mapleitservices.com",
-              "logo": "https://Mapleitservices.com/logo.png",
+              "url": "https://smarteprintservices.com",
+              "logo": "https://smarteprintservices.com/logo.png",
               "description": "Smart ePrint Services is an independent online retailer selling printers, scanners, ink, toner, and printing accessories across the United States. Owned and operated by Innovation Dynamics Group LLC, an HP Authorized Reseller.",
               "address": {
                 "@type": "PostalAddress",
@@ -135,9 +135,9 @@ export default function RootLayout({ children }) {
                   "availableLanguage": "English"
                 }
               ],
-              "email": "support@Mapleitservices.com",
+              "email": "support@smarteprintservices.com",
               "sameAs": [
-                "https://www.Mapleitservices.com"
+                "https://www.smarteprintservices.com"
               ]
             })
           }}

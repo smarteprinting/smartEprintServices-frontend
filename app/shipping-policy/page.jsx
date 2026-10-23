@@ -72,7 +72,7 @@ const sections = [
       "Automated Shipping Confirmation: As soon as your order has been packed and handed over to the carrier, we will dispatch an automated shipping confirmation email to the email address provided at checkout.",
       "Tracking Number: Your shipping confirmation email includes the official carrier name (UPS, FedEx, or USPS), package tracking number, and a direct tracking link.",
       "Carrier Scan Timing: Please allow 12 to 24 hours from the time your shipment confirmation email is received for initial carrier tracking scans to populate in the carrier system.",
-      "Support Inquiries: You can also inquire about order tracking anytime by contacting our customer care team at support@Mapleitservices.com with your order number.",
+      "Support Inquiries: You can also inquire about order tracking anytime by contacting our customer care team at support@smarteprintservices.com with your order number.",
     ],
   },
   {
@@ -80,7 +80,7 @@ const sections = [
     title: "6. Address Accuracy & In-Transit Corrections",
     content: [
       "Customer Responsibility: Customers are responsible for reviewing and verifying the complete accuracy of their shipping address during checkout, including apartment, suite, floor, or building numbers, and the correct 5-digit ZIP code.",
-      "Immediate Corrections Before Dispatch: If you notice an error in your delivery address after placing an order, contact our support team immediately by phone at +1 (877) 765-2289 or by email at support@Mapleitservices.com before our 1:00 PM EST dispatch cutoff.",
+      "Immediate Corrections Before Dispatch: If you notice an error in your delivery address after placing an order, contact our support team immediately by phone at +1 (877) 765-2289 or by email at support@smarteprintservices.com before our 1:00 PM EST dispatch cutoff.",
       "In-Transit Limitations: Once a package has received a carrier scan and departed our facility, carrier security rules prohibit address rerouting or corrections while the package is in transit.",
       "Undeliverable & Returned Packages: If a shipment is returned to our warehouse by the carrier due to an incorrect, incomplete, or vacated address provided by the customer, we will notify you upon receipt. You may choose to have the order reshipped (customer pays applicable reshipment carrier fees) or refunded minus actual return shipping costs incurred.",
     ],
@@ -96,7 +96,7 @@ const sections = [
       "3. Verify that the shipping address on your confirmation matches your exact location.",
       "4. Notify us within 5 business days of the marked delivery date. We will initiate a formal lost-package investigation with the carrier. If the carrier confirms the package is lost or misdelivered, we will immediately send a replacement at no cost or issue a 100% full refund.",
       "Damaged Shipments (48-Hour Notice): All deliveries must be inspected upon arrival. If your package arrives crushed, punctured, water-damaged, or broken in transit:",
-      "• You must contact Smart ePrint Services within 48 hours of delivery at support@Mapleitservices.com.",
+      "• You must contact Smart ePrint Services within 48 hours of delivery at support@smarteprintservices.com.",
       "• Please include clear photos of the damaged shipping box, carrier shipping label, and damaged contents.",
       "• We will immediately provide a prepaid return shipping label and arrange an urgent replacement or a full 100% refund.",
     ],
@@ -107,7 +107,7 @@ const sections = [
     content: [
       "Cancellation Window: You may cancel an order free of charge at any time prior to the package being processed for dispatch or transferred to the carrier.",
       "Daily Cancellation Cutoff: For same-day dispatch orders, the cancellation cutoff is 1:00 PM EST on business days (Monday through Friday).",
-      "How to Cancel: To cancel an order before cutoff, immediately call our toll-free support line at +1 (877) 765-2289 or email support@Mapleitservices.com with the subject line \"URGENT: Cancel Order #[Your Order Number]\".",
+      "How to Cancel: To cancel an order before cutoff, immediately call our toll-free support line at +1 (877) 765-2289 or email support@smarteprintservices.com with the subject line \"URGENT: Cancel Order #[Your Order Number]\".",
       "Orders Already in Transit: Once an order has entered the carrier network, cancellation is no longer possible. You must accept the delivery and initiate a return in accordance with our 30-day Returns & Refunds Policy.",
     ],
   },
@@ -193,7 +193,7 @@ export default function ShippingPolicyPage() {
       {/* Main Content Layout */}
       <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start lg:gap-14">
-          
+
           {/* Sticky Sidebar Navigation */}
           <aside className="top-24 space-y-6 lg:sticky">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -231,11 +231,11 @@ export default function ShippingPolicyPage() {
                   +1 (877) 765-2289
                 </a>
                 <a
-                  href="mailto:support@Mapleitservices.com"
+                  href="mailto:support@smarteprintservices.com"
                   className="flex items-center gap-2 text-[#0758cf] hover:underline"
                 >
                   <Mail className="h-3.5 w-3.5" />
-                  support@Mapleitservices.com
+                  support@smarteprintservices.com
                 </a>
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function ShippingPolicyPage() {
 
           {/* Legal Document Article */}
           <article className="min-w-0 rounded-[28px] border border-slate-200 bg-white px-6 py-8 shadow-[0_12px_40px_rgba(10,38,72,0.05)] sm:px-10 lg:px-14 lg:py-12">
-            
+
             {/* Header intro */}
             <div className="border-b border-slate-200 pb-8">
               <div className="inline-flex items-center gap-2 rounded-md bg-blue-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0758cf]">
@@ -256,14 +256,14 @@ export default function ShippingPolicyPage() {
               <p className="mt-2 text-sm font-semibold text-slate-500">
                 Effective &amp; Last updated: October 2026
               </p>
-              
+
               {/* Highlight callout establishing entity */}
               <div className="mt-6 rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50/80 to-indigo-50/50 p-5 text-sm leading-relaxed text-slate-700">
                 <p className="font-bold text-slate-900">
                   Store Identification Notice:
                 </p>
                 <p className="mt-1">
-                  <strong>Smart ePrint Services</strong> (<a href="https://Mapleitservices.com" className="text-[#0758cf] underline">Mapleitservices.com</a>) is an online retail store owned and operated by <strong>Innovation Dynamics Group LLC</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), a Minnesota limited liability company based at 11397 Quincy St NE, Blaine, MN 55434.
+                  <strong>Smart ePrint Services</strong> (<a href="https://smarteprintservices.com" className="text-[#0758cf] underline">smarteprintservices.com</a>) is an online retail store owned and operated by <strong>Innovation Dynamics Group LLC</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), a Minnesota limited liability company based at 11397 Quincy St NE, Blaine, MN 55434.
                 </p>
                 <p className="mt-2 text-xs text-slate-600">
                   This policy outlines our exact shipping zones, dispatch timelines, free shipping threshold, carrier procedures, and support commitments.
@@ -326,7 +326,7 @@ export default function ShippingPolicyPage() {
                         <div>
                           <p className="font-bold text-rose-950">Damaged Goods Notice (48-Hour Deadline):</p>
                           <p className="mt-0.5 text-xs text-rose-800 leading-relaxed">
-                            Inspect your shipment immediately upon arrival. All shipping damage, broken boxes, or item loss must be reported within <strong>48 hours of delivery</strong> to <a href="mailto:support@Mapleitservices.com" className="font-bold underline">support@Mapleitservices.com</a> with photographs to ensure an immediate replacement or refund.
+                            Inspect your shipment immediately upon arrival. All shipping damage, broken boxes, or item loss must be reported within <strong>48 hours of delivery</strong> to <a href="mailto:support@smarteprintservices.com" className="font-bold underline">support@smarteprintservices.com</a> with photographs to ensure an immediate replacement or refund.
                           </p>
                         </div>
                       </div>
@@ -394,10 +394,10 @@ export default function ShippingPolicyPage() {
                               Shipping &amp; Support Email
                             </p>
                             <a
-                              href="mailto:support@Mapleitservices.com"
+                              href="mailto:support@smarteprintservices.com"
                               className="mt-0.5 block font-bold text-[#0758cf] hover:underline"
                             >
-                              support@Mapleitservices.com
+                              support@smarteprintservices.com
                             </a>
                             <p className="text-xs text-slate-500">
                               Ticket responses within 24 business hours

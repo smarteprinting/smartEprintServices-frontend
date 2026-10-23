@@ -26,8 +26,8 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email Customer Care",
-    value: "support@Mapleitservices.com",
-    href: "mailto:support@Mapleitservices.com",
+    value: "support@smarteprintservices.com",
+    href: "mailto:support@smarteprintservices.com",
     subtext: "24/7 ticket response within 24h",
     badge: "Online Support",
   },

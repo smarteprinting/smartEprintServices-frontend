@@ -136,9 +136,9 @@ export default function RefundCancellationPolicy() {
                   <Phone className="h-3.5 w-3.5" />
                   +1 (877) 765-2289
                 </a>
-                <a href="mailto:support@Mapleitservices.com" className="flex items-center gap-2 text-[#0758cf] hover:underline">
+                <a href="mailto:support@smarteprintservices.com" className="flex items-center gap-2 text-[#0758cf] hover:underline">
                   <Mail className="h-3.5 w-3.5" />
-                  support@Mapleitservices.com
+                  support@smarteprintservices.com
                 </a>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function RefundCancellationPolicy() {
                 </p>
                 <div className="space-y-3">
                   {[
-                    ["Step 1 — Contact Us", "Email support@Mapleitservices.com or call +1 (877) 765-2289 with your order number, the item(s) you wish to return, and the reason for the return. Do this within the 30-day return window."],
+                    ["Step 1 — Contact Us", "Email support@smarteprintservices.com or call +1 (877) 765-2289 with your order number, the item(s) you wish to return, and the reason for the return. Do this within the 30-day return window."],
                     ["Step 2 — Eligibility Review", "Our team will review your request against our return conditions. Eligible returns will be issued an RMA number and return warehouse address. Ineligible requests (e.g., non-returnable item, outside window) will be communicated to you with an explanation."],
                     ["Step 3 — Pack the Item Securely", "Re-pack the item in its original manufacturer packaging with all original accessories, documentation, power cords, and components included."],
                     ["Step 4 — Ship the Return", "Ship the item to the RMA return address provided using a trackable shipping carrier. Write your RMA number clearly on the outside of the package. Retain your tracking number as proof of return shipment."],
@@ -355,7 +355,7 @@ export default function RefundCancellationPolicy() {
 
                 <div className="space-y-3">
                   {[
-                    ["Contact Us Immediately", "Email support@Mapleitservices.com within 48 hours of delivery (for transit damage) or within 7 days of first use (for manufacturing defects). Include your order number and a clear description of the issue."],
+                    ["Contact Us Immediately", "Email support@smarteprintservices.com within 48 hours of delivery (for transit damage) or within 7 days of first use (for manufacturing defects). Include your order number and a clear description of the issue."],
                     ["Provide Evidence", "Attach clear photographs of the damaged shipping box, shipping label, and the damaged product contents. For defects, describe the specific fault and include any error codes displayed."],
                     ["Retain All Packaging", "Keep all original packaging, foam inserts, and contents until your claim has been fully resolved. Discarding packaging may affect your claim."],
                     ["Resolution Options", "Once verified, we will offer your choice of: (a) a prompt free replacement of the same item, or (b) a full 100% refund of the item purchase price. We provide the prepaid return shipping label — you pay nothing."],
@@ -403,7 +403,7 @@ export default function RefundCancellationPolicy() {
                 <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50/70 p-4 text-sm">
                   <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
                   <p className="text-amber-900">
-                    <strong>Refund Not Arrived?</strong> If you have not received a refund credit after <strong>15 business days from your refund approval email</strong>, first check with your bank or card issuer. If the issue persists, contact us at <a href="mailto:support@Mapleitservices.com" className="font-bold underline">support@Mapleitservices.com</a> with your order number and we will investigate immediately.
+                    <strong>Refund Not Arrived?</strong> If you have not received a refund credit after <strong>15 business days from your refund approval email</strong>, first check with your bank or card issuer. If the issue persists, contact us at <a href="mailto:support@smarteprintservices.com" className="font-bold underline">support@smarteprintservices.com</a> with your order number and we will investigate immediately.
                   </p>
                 </div>
                 <p className="text-sm font-semibold text-slate-700">
@@ -460,7 +460,7 @@ export default function RefundCancellationPolicy() {
                   </li>
                   <li className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm">
                     <span className="font-black text-[#0758cf]">2.</span>
-                    <span>Place a new, separate order on <Link href="/shop" className="font-bold text-[#0758cf] hover:underline">Mapleitservices.com</Link> for the product you want.</span>
+                    <span>Place a new, separate order on <Link href="/shop" className="font-bold text-[#0758cf] hover:underline">smarteprintservices.com</Link> for the product you want.</span>
                   </li>
                 </ol>
                 <p className="text-sm text-slate-500">
@@ -503,7 +503,7 @@ export default function RefundCancellationPolicy() {
                       <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0758cf]" />
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
-                        <a href="mailto:support@Mapleitservices.com" className="mt-0.5 block font-bold text-[#0758cf] hover:underline break-all">support@Mapleitservices.com</a>
+                        <a href="mailto:support@smarteprintservices.com" className="mt-0.5 block font-bold text-[#0758cf] hover:underline break-all">support@smarteprintservices.com</a>
                         <p className="text-xs text-slate-500">Response within 24 hours</p>
                       </div>
                     </div>

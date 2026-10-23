@@ -145,11 +145,11 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="mailto:support@Mapleitservices.com"
+                href="mailto:support@smarteprintservices.com"
                 className="flex items-start gap-2.5 text-sm text-slate-400 hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" />
-                <span className="break-all">support@Mapleitservices.com</span>
+                <span className="break-all">support@smarteprintservices.com</span>
               </a>
             </li>
             <li className="flex items-start gap-2.5 text-sm text-slate-400">
@@ -183,7 +183,7 @@ export default function Footer() {
             className="text-xs text-slate-400 hover:text-white transition-colors"
             aria-label="Back to top"
           >
-              Back to top
+            Back to top
           </button>
         </div>
       </div>

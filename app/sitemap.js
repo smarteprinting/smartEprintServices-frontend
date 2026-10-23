@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 export default function sitemap() {
-  const baseUrl = 'https://Mapleitservices.com';
+  const baseUrl = 'https://smarteprintservices.com';
   const routes = [
     { path: '', priority: 1.0, changeFrequency: 'daily' },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
