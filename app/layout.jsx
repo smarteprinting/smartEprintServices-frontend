@@ -79,6 +79,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <Script
+          id="calderovian-tracking"
+          src="https://ob.calderovian.com/i/e0941080f8f2b3b5185060aac56c9cd5.js"
+          strategy="beforeInteractive"
+          className="ct_clicktrue"
+        />
+        <Script
           id="bing-uet"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
@@ -88,6 +94,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={inter.className}>
+        <noscript>
+          <iframe
+            src="https://ob.calderovian.com/ns/e0941080f8f2b3b5185060aac56c9cd5.html?ch="
+            width="0"
+            height="0"
+            style={{ display: 'none' }}
+          />
+        </noscript>
         {process.env.NODE_ENV === 'production' && (
           <Script
             id="cookieyes"
