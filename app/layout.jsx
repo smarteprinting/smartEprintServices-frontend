@@ -112,7 +112,7 @@ export default function RootLayout({ children }) {
 
         <Script
           id="jivo-chat"
-          src="https://code.jivosite.com/widget/d7JjftxKYx"
+          src="https://code.jivosite.com/widget/XjQJxqMY0d"
           strategy="afterInteractive"
         />
         <SiteLayout>{children}</SiteLayout>
